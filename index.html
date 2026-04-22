@@ -154,6 +154,28 @@
       color: var(--accent);
     }
 
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    .site-nav a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 2px;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
     @media (max-width: 900px) {
       .two-col {
         grid-template-columns: 1fr;
@@ -169,15 +191,20 @@
 
   <main class="page">
 
+    <!-- NAV -->
+    <nav class="site-nav">
+      <span class="brand" style="margin-bottom:0;">MOTIF 54</span>
+      <a href="/projects.html">Projects</a>
+    </nav>
+
     <!-- SECTION 1: THE BRIEF -->
-    <div class="brand">MOTIF 54</div>
 
     <h1>African-Owned. Equity-Active. Built for the Long Arc.</h1>
 
     <p>
       Africa's next decade of value creation will be decided by who controls the
-      infrastructure beneath it — <strong>energy, natural resources, data infrastructure,
-      and cultural industries</strong> — and whether that ownership accrues inside the
+      infrastructure beneath it — <strong>natural resources, data infrastructure,
+      and cultural technology</strong> — and whether that ownership accrues inside the
       continent or drains out of it.
     </p>
 
@@ -208,9 +235,9 @@
           capital that is prepared to operate with discipline and patience.
         </p>
         <p>
-          Our practitioners carry direct experience across energy development, data
-          infrastructure, critical minerals, natural resources, and cultural sector
-          structuring. Our read of markets comes from <strong>on-the-ground engagement</strong>
+          Our practitioners carry direct experience across natural resources, data
+          infrastructure, and cultural technology, with deep roots in the energy and
+          minerals sectors that underpin all three. Our read of markets comes from <strong>on-the-ground engagement</strong>
           with utilities, regulators, project sponsors, development finance institutions,
           and local partners across Southern, Central, and East Africa.
         </p>
@@ -245,7 +272,7 @@
         <div class="spec-title">AFRICAN SYSTEMS ORIENTATION BRIEF</div>
         <ul>
           <li>Sector-by-sector map of where value accrues versus where it transfers out</li>
-          <li>Physical, regulatory, and political constraints — natural resources, energy, data infrastructure, cultural industries</li>
+          <li>Physical, regulatory, and political constraints — natural resources, data infrastructure, cultural technology</li>
           <li>Failure modes we observe repeatedly across markets</li>
           <li>3–5 investable theses actionable within 18–24 months</li>
         </ul>
@@ -254,7 +281,7 @@
       <div class="spec">
         <div class="spec-title">THESIS-TO-STRUCTURE TRANSLATION</div>
         <ul>
-          <li>Thesis pressure-tested against local constraints across all four sectors</li>
+          <li>Thesis pressure-tested against local constraints across all three sectors</li>
           <li>Ranked entry modes — direct acquisition, JV, minority stake, structured debt</li>
           <li>Partner archetypes that strengthen the deal — and categories that will corrode it</li>
           <li>12-month decision architecture: proceed / restructure / exit</li>
@@ -275,7 +302,7 @@
         <div class="spec-title">CO-INVESTMENT AND EQUITY PARTICIPATION</div>
         <ul>
           <li>For opportunities where our assessment warrants direct participation, we co-invest</li>
-          <li>We take equity positions in natural resources, energy, data infrastructure, and cultural sector assets</li>
+          <li>We take equity positions in natural resources, data infrastructure, and cultural technology assets</li>
           <li>We do not charge advisory fees on deals where we hold equity — our interests are aligned or we are not in the deal</li>
           <li>JV partners seeking an African-owned co-investor with structural depth: this is the engagement to discuss</li>
         </ul>
