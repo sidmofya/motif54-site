@@ -59,12 +59,12 @@
     }
 
     h1 {
-      font-size: 42px;
+      font-size: clamp(28px, 5vw, 48px);
       margin-bottom: 24px;
     }
 
     h2 {
-      font-size: 26px;
+      font-size: clamp(20px, 3vw, 28px);
       margin-bottom: 16px;
     }
 
@@ -91,7 +91,7 @@
 
     .specs {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 32px;
       margin-top: 48px;
     }
@@ -99,10 +99,20 @@
     .spec {
       border: 1px solid var(--muted);
       padding: 32px;
+      transition: border-color 200ms ease, background-color 200ms ease;
+    }
+
+    .spec:hover {
+      border-color: var(--accent);
+      background: var(--soft);
     }
 
     .spec.highlight {
       border-color: var(--accent);
+    }
+
+    .spec.highlight:hover {
+      background: #EDF0F8;
     }
 
     .spec-title {
@@ -124,10 +134,11 @@
     .filter {
       background: var(--soft);
       padding: 48px;
-      text-align: center;
+      text-align: left;
       margin: 96px 0;
       font-family: 'Libre Baskerville', serif;
-      font-size: 20px;
+      font-size: clamp(18px, 2.5vw, 22px);
+      border-left: 3px solid var(--accent);
     }
 
     .cta {
@@ -147,11 +158,13 @@
       color: var(--ink);
       border-bottom: 2px solid var(--accent);
       padding-bottom: 4px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.12em;
+      transition: color 150ms, border-color 150ms;
     }
 
     .cta a:hover {
       color: var(--accent);
+      border-color: #162C66;
     }
 
     .site-nav {
@@ -169,6 +182,7 @@
       text-decoration: none;
       border-bottom: 1px solid var(--muted);
       padding-bottom: 2px;
+      transition: color 150ms, border-color 150ms;
     }
 
     .site-nav a:hover {
@@ -181,8 +195,15 @@
         grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: 34px;
+      .specs {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding-left: 20px;
+        padding-right: 20px;
       }
     }
   </style>
