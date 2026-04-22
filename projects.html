@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — MOTIF 54</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="<https://fonts.googleapis.com>">
+  <link rel="preconnect" href="<https://fonts.gstatic.com>" crossorigin>
+
+  <!-- Serif (Authority) -->
+  <link href="<https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap>" rel="stylesheet">
+
+  <!-- Sans (Clarity) -->
+  <link href="<https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap>" rel="stylesheet">
+
+  <!-- Mono (Systems) -->
+  <link href="<https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap>" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F5F5F0;
+      --ink: #1A1A1A;
+      --muted: #6B6B6B;
+      --accent: #1F3C88;
+      --soft: #ECECE7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 32px 96px;
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    .site-nav a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 2px;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--muted);
+      margin: 64px 0;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .spec {
+      border: 1px solid var(--muted);
+      padding: 32px;
+    }
+
+    .spec-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .spec-thesis {
+      margin-bottom: 24px;
+    }
+
+    .project-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .project-link a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    .project-link a:hover {
+      color: var(--accent);
+    }
+
+    .coming-soon {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    .filter {
+      background: var(--soft);
+      padding: 48px;
+      text-align: center;
+      margin: 96px 0 0;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 20px;
+    }
+
+    .filter a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+    }
+
+    .filter a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="page">
+
+    <!-- NAV -->
+    <nav class="site-nav">
+      <a href="/index.html">← Home</a>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em;">MOTIF 54</span>
+    </nav>
+
+    <h1>Projects</h1>
+
+    <p>
+      We invest and advise across three sectors where African ownership is structurally
+      underrepresented and where long-horizon capital can compound meaningful advantage.
+    </p>
+
+    <div class="specs">
+
+      <div class="spec">
+        <div class="spec-title">NATURAL RESOURCES</div>
+        <p class="spec-thesis">
+          We back early-stage resource projects — minerals, energy, and land — in African
+          jurisdictions where ownership structure and technical discipline are aligned.
+          The value in African natural resources has historically transferred out of the
+          continent at the structuring phase. We work to change that.
+        </p>
+        <div class="project-link">
+          <a href="<https://kafwego.netlify.com>" target="_blank" rel="noopener">Kafwego →</a>
+        </div>
+      </div>
+
+      <div class="spec">
+        <div class="spec-title">DATA INFRASTRUCTURE</div>
+        <p class="spec-thesis">
+          African data infrastructure is under-owned by African capital. We invest in and
+          support ventures building the physical and software layer that connects African
+          institutions, markets, and people — with ownership structures that keep value
+          on the continent.
+        </p>
+        <div class="project-link">
+          <a href="<https://coppercloud.ai>" target="_blank" rel="noopener">CopperCloud →</a>
+        </div>
+      </div>
+
+      <div class="spec">
+        <div class="spec-title">CULTURAL TECHNOLOGY</div>
+        <p class="spec-thesis">
+          Culture is infrastructure. We are building our thesis around African creative
+          and cultural ventures where technology extends reach, ownership, and economic
+          return for African creators and institutions.
+        </p>
+        <div class="coming-soon">Coming soon</div>
+      </div>
+
+    </div>
+
+    <!-- SPONSOR CTA -->
+    <div class="filter">
+      Leading a project and want to discuss becoming part of MOTIF 54?<br/>
+      <a href="mailto:info@motif54.com">info@motif54.com</a>
+    </div>
+
+  </main>
+
+</body>
+</html>
