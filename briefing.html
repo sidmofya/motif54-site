@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Briefing Request — MOTIF 54</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F5F5F0;
+      --ink: #1A1A1A;
+      --muted: #6B6B6B;
+      --accent: #1F3C88;
+      --soft: #ECECE7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 32px 96px;
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 64px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    .site-nav a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 2px;
+      transition: color 150ms, border-color 150ms;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .page-header {
+      margin-bottom: 48px;
+    }
+
+    .page-header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0 0 12px;
+    }
+
+    .page-header p {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ── Form wrapper ── */
+    .bf-wrap {
+      max-width: 680px;
+    }
+
+    /* ── Step card ── */
+    .bf-step {
+      background: #ffffff;
+      border: 1px solid #d8d8d3;
+      padding: 40px 48px;
+    }
+
+    .bf-step.hidden { display: none; }
+
+    .bf-step-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .bf-question {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .bf-req { color: var(--accent); margin-left: 2px; }
+
+    .bf-hint {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .bf-sub-question {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 28px 0 8px;
+    }
+
+    /* ── Inputs ── */
+    .bf-textarea,
+    .bf-input {
+      width: 100%;
+      border: 1px solid #c8c8c3;
+      padding: 10px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+      transition: border-color 150ms;
+    }
+
+    .bf-textarea { min-height: 130px; resize: vertical; }
+
+    .bf-textarea:focus,
+    .bf-input:focus { border-color: var(--accent); }
+
+    .bf-textarea.error,
+    .bf-input.error { border-color: #b03030; }
+
+    /* ── Radio / Checkbox options ── */
+    .bf-radio-group,
+    .bf-check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .bf-radio-option,
+    .bf-check-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #d4d4cf;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: border-color 150ms, background 150ms;
+      user-select: none;
+    }
+
+    .bf-radio-option:hover,
+    .bf-check-option:hover {
+      border-color: var(--accent);
+      background: #edf0f8;
+    }
+
+    .bf-radio-option input,
+    .bf-check-option input {
+      margin: 0;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .bf-radio-group.error .bf-radio-option { border-color: #b03030; }
+
+    /* ── Field grouping for step 5 ── */
+    .bf-field { margin-bottom: 24px; }
+    .bf-field:last-of-type { margin-bottom: 0; }
+
+    /* ── Actions ── */
+    .bf-actions { margin-top: 28px; }
+
+    .bf-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      cursor: pointer;
+      transition: background 150ms;
+    }
+
+    .bf-btn:hover { background: var(--accent); }
+    .bf-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── Inline error messages ── */
+    .bf-error-msg {
+      font-size: 13px;
+      color: #b03030;
+      margin: 6px 0 0;
+    }
+
+    /* ── Success state ── */
+    .bf-success {
+      background: var(--soft);
+      border-left: 3px solid var(--accent);
+      padding: 40px 48px;
+      max-width: 680px;
+    }
+
+    .bf-success p {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 18px;
+      margin: 0 0 12px;
+    }
+
+    .bf-success p:last-child { margin: 0; }
+
+    .bf-success .bf-success-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .page { padding-left: 20px; padding-right: 20px; }
+      .bf-step { padding: 28px 24px; }
+      .bf-success { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="page">
+
+    <nav class="site-nav">
+      <a href="/index.html">← Home</a>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.08em;">MOTIF 54</span>
+    </nav>
+
+    <div class="page-header">
+      <h1>Briefing Request</h1>
+      <p>If the horizon is long and the ownership model is serious, let's assess fit.</p>
+    </div>
+
+    <div class="bf-wrap">
+
+      <form id="bf-form" novalidate>
+
+        <!-- Step 1 -->
+        <div class="bf-step" data-step="1">
+          <div class="bf-step-label">1 of 5</div>
+          <label class="bf-question" for="bf-constraint">
+            What is the primary constraint preventing your organization from deploying capital in Africa <em>right now</em>?<span class="bf-req">*</span>
+          </label>
+          <p class="bf-hint">Be specific. We are less interested in ambition than in what is actually blocking action.</p>
+          <textarea class="bf-textarea" id="bf-constraint" name="constraint" rows="5" required></textarea>
+          <div class="bf-actions">
+            <button type="button" class="bf-btn" data-next="2">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bf-step hidden" data-step="2">
+          <div class="bf-step-label">2 of 5</div>
+          <label class="bf-question">
+            What scale of capital is your organization currently evaluating for Africa-related opportunities?<span class="bf-req">*</span>
+          </label>
+          <div class="bf-radio-group" id="bf-capital-group">
+            <label class="bf-radio-option">
+              <input type="radio" name="capital_scale" value="under $25M"> under $25M
+            </label>
+            <label class="bf-radio-option">
+              <input type="radio" name="capital_scale" value="$25M–$100M"> $25M–$100M
+            </label>
+            <label class="bf-radio-option">
+              <input type="radio" name="capital_scale" value="$100M–$500M"> $100M–$500M
+            </label>
+            <label class="bf-radio-option">
+              <input type="radio" name="capital_scale" value="$500M+"> $500M+
+            </label>
+            <label class="bf-radio-option">
+              <input type="radio" name="capital_scale" value="Still exploratory / pre-allocation"> Still exploratory / pre-allocation
+            </label>
+          </div>
+          <label class="bf-sub-question" for="bf-time-horizon">If allocated, over what time horizon?</label>
+          <input type="text" class="bf-input" id="bf-time-horizon" name="time_horizon">
+          <div class="bf-actions">
+            <button type="button" class="bf-btn" data-next="3">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bf-step hidden" data-step="3">
+          <div class="bf-step-label">3 of 5</div>
+          <label class="bf-question">
+            Which domains are most material to your current decision-making?
+          </label>
+          <p class="bf-hint">You can select multiple</p>
+          <div class="bf-check-group">
+            <label class="bf-check-option">
+              <input type="checkbox" name="domains" value="Data infrastructure / compute"> Data infrastructure / compute
+            </label>
+            <label class="bf-check-option">
+              <input type="checkbox" name="domains" value="Critical minerals or resource-linked assets"> Critical minerals or resource-linked assets
+            </label>
+            <label class="bf-check-option">
+              <input type="checkbox" name="domains" value="Industrial zones / corridors"> Industrial zones / corridors
+            </label>
+            <label class="bf-check-option">
+              <input type="checkbox" name="domains" value="Capital structure and governance"> Capital structure and governance
+            </label>
+            <label class="bf-check-option">
+              <input type="checkbox" name="domains" value="Policy or regulatory exposure"> Policy or regulatory exposure
+            </label>
+          </div>
+          <div class="bf-actions">
+            <button type="button" class="bf-btn" data-next="4">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bf-step hidden" data-step="4">
+          <div class="bf-step-label">4 of 5</div>
+          <label class="bf-question" for="bf-risks">
+            Which risks are most likely to cause your organization to <em>walk away</em> from an otherwise attractive opportunity?<span class="bf-req">*</span>
+          </label>
+          <p class="bf-hint">(e.g. governance, FX repatriation, political exposure, partner integrity, execution risk)</p>
+          <textarea class="bf-textarea" id="bf-risks" name="dealbreaker_risks" rows="5" required></textarea>
+          <div class="bf-actions">
+            <button type="button" class="bf-btn" data-next="5">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="bf-step hidden" data-step="5">
+          <div class="bf-step-label">5 of 5</div>
+
+          <div class="bf-field">
+            <label class="bf-question" for="bf-name">Your Name<span class="bf-req">*</span></label>
+            <input type="text" class="bf-input" id="bf-name" name="name" required>
+          </div>
+
+          <div class="bf-field">
+            <label class="bf-question" for="bf-role">Your role and mandate in this decision.<span class="bf-req">*</span></label>
+            <p class="bf-hint">e.g. VP Strategy, Head of CVC, Corporate Development</p>
+            <input type="text" class="bf-input" id="bf-role" name="role" required>
+          </div>
+
+          <div class="bf-field">
+            <label class="bf-question" for="bf-email">Your Work Email<span class="bf-req">*</span></label>
+            <input type="email" class="bf-input" id="bf-email" name="email" required>
+          </div>
+
+          <div class="bf-actions">
+            <button type="submit" class="bf-btn" id="bf-submit">Next</button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Success state -->
+      <div id="bf-success" class="bf-success hidden">
+        <p>Your briefing request has been received.</p>
+        <p class="bf-success-sub">We will review it carefully and be in touch if there is a fit. This typically takes 3–5 business days.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    /*
+     * ── GOOGLE SHEETS SETUP ────────────────────────────────────────────────
+     *
+     * 1. Open your Google Sheet.
+     * 2. Go to Extensions → Apps Script.
+     * 3. Replace the default code with the following function:
+     *
+     *    function doPost(e) {
+     *      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+     *      var p = e.parameter;
+     *      sheet.appendRow([
+     *        new Date(),
+     *        p.name,
+     *        p.email,
+     *        p.role,
+     *        p.constraint,
+     *        p.capital_scale,
+     *        p.time_horizon,
+     *        p.domains,
+     *        p.dealbreaker_risks
+     *      ]);
+     *      return ContentService.createTextOutput('OK');
+     *    }
+     *
+     *    Column order: Timestamp | Name | Email | Role |
+     *                  Constraint | Capital Scale | Time Horizon |
+     *                  Domains | Dealbreaker Risks
+     *
+     * 4. Click Deploy → New deployment → Web app.
+     *    - Execute as: Me
+     *    - Who has access: Anyone
+     * 5. Copy the deployment URL and paste it below.
+     *
+     * ──────────────────────────────────────────────────────────────────────
+     */
+    var ENDPOINT = 'YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL_HERE';
+
+    var form = document.getElementById('bf-form');
+    var successEl = document.getElementById('bf-success');
+
+    /* Next buttons */
+    document.querySelectorAll('[data-next]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var step = this.closest('.bf-step');
+        if (validateStep(step)) {
+          showStep(parseInt(this.dataset.next));
+        }
+      });
+    });
+
+    /* Submit */
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var lastStep = document.querySelector('[data-step="5"]');
+      if (!validateStep(lastStep)) return;
+
+      var submitBtn = document.getElementById('bf-submit');
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      var fd = new FormData();
+      fd.append('name',               form.elements['name'].value.trim());
+      fd.append('email',              form.elements['email'].value.trim());
+      fd.append('role',               form.elements['role'].value.trim());
+      fd.append('constraint',         form.elements['constraint'].value.trim());
+      fd.append('capital_scale',      (form.querySelector('input[name="capital_scale"]:checked') || {value:''}).value);
+      fd.append('time_horizon',       form.elements['time_horizon'].value.trim());
+      fd.append('dealbreaker_risks',  form.elements['dealbreaker_risks'].value.trim());
+
+      var domains = [];
+      form.querySelectorAll('input[name="domains"]:checked').forEach(function(cb) {
+        domains.push(cb.value);
+      });
+      fd.append('domains', domains.join('; '));
+
+      fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd })
+        .catch(function() { /* no-cors response is always opaque — treat as success */ });
+
+      form.classList.add('hidden');
+      successEl.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function showStep(num) {
+      document.querySelectorAll('.bf-step').forEach(function(s) {
+        s.classList.add('hidden');
+      });
+      var target = document.querySelector('[data-step="' + num + '"]');
+      if (target) {
+        target.classList.remove('hidden');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function validateStep(step) {
+      /* Clear previous errors */
+      step.querySelectorAll('.bf-error-msg').forEach(function(el) { el.remove(); });
+      step.querySelectorAll('.error').forEach(function(el) { el.classList.remove('error'); });
+
+      var valid = true;
+
+      /* Required text / email inputs */
+      step.querySelectorAll('input[required], textarea[required]').forEach(function(field) {
+        if (!field.value.trim()) {
+          field.classList.add('error');
+          addError(field.parentNode, field, 'This field is required.');
+          valid = false;
+        } else if (field.type === 'email' && !validEmail(field.value.trim())) {
+          field.classList.add('error');
+          addError(field.parentNode, field, 'Please enter a valid work email.');
+          valid = false;
+        }
+      });
+
+      /* Required radio group */
+      var radioGroup = step.querySelector('.bf-radio-group');
+      if (radioGroup) {
+        var checked = step.querySelector('input[name="capital_scale"]:checked');
+        if (!checked) {
+          radioGroup.classList.add('error');
+          addError(radioGroup.parentNode, radioGroup, 'Please select an option.');
+          valid = false;
+        }
+      }
+
+      return valid;
+    }
+
+    function addError(parent, afterEl, msg) {
+      var p = document.createElement('p');
+      p.className = 'bf-error-msg';
+      p.textContent = msg;
+      /* Insert after the field */
+      if (afterEl.nextSibling) {
+        parent.insertBefore(p, afterEl.nextSibling);
+      } else {
+        parent.appendChild(p);
+      }
+    }
+
+    function validEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+  </script>
+
+</body>
+</html>
