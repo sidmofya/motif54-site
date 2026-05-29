@@ -68,8 +68,21 @@ that page. To wire up your own backend:
 Sheet column order and the alert-email recipient are documented at the top of
 `apps-script.gs`.
 
+## Deploy (Netlify)
+
+The repo is deploy-ready via `netlify.toml` (no build step; publishes the repo root).
+Recommended: **Git-based continuous deploy** so every push to the production branch ships.
+
+1. In Netlify → **Add new site → Import an existing project** → connect this GitHub repo.
+2. Build settings auto-fill from `netlify.toml` (build command empty, publish dir `.`).
+   Choose the production branch (e.g. `main`).
+3. Deploy. Then **Domain settings → Add custom domain → `motif54.com`** and point DNS
+   (Netlify DNS, or an `ALIAS`/`A` + `CNAME www`) per Netlify's instructions; HTTPS is
+   provisioned automatically.
+
+`netlify.toml` also 301-redirects the legacy `/briefing.html` to `/request-access.html`
+and sets basic security + asset-caching headers.
+
 ## Notes
 
 - Site copy is **v0.1 temporary design copy** — voice will be sharpened in a later pass.
-- The footer **LinkedIn** link is a placeholder (`linkedin.com/company/motif54`); update it
-  to the real profile/company URL.
