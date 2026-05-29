@@ -1,0 +1,27 @@
+# Netlify configuration for motif54.com
+# Static site — no build step. The repository root IS the published site.
+
+[build]
+  publish = "."
+  command = ""
+
+# Send the legacy briefing URL to the new Request Access page with a real
+# 301 (the in-page meta refresh in briefing.html stays as a fallback).
+[[redirects]]
+  from = "/briefing.html"
+  to = "/request-access.html"
+  status = 301
+  force = true
+
+# Security / caching headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
