@@ -3,358 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOTIF 54 — African Capital, African Ownership</title>
+  <title>MOTIF 54 — Capital intelligence for Africa's next strategic stack</title>
+  <meta name="description" content="MOTIF 54 provides intelligence briefs and private situation rooms for investors, institutions, and operators tracking Africa's energy, minerals, compute, AI, and sovereignty stack." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MOTIF 54 — Capital intelligence for Africa's next strategic stack" />
+  <meta property="og:description" content="Intelligence briefs and private situation rooms for capital tracking Africa's energy, minerals, compute, AI, and sovereignty stack." />
+  <meta property="og:url" content="https://motif54.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MOTIF 54 — Capital intelligence for Africa's next strategic stack" />
+  <meta name="twitter:description" content="Intelligence briefs and private situation rooms for capital tracking Africa's energy, minerals, compute, AI, and sovereignty stack." />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="<https://fonts.googleapis.com>">
-  <link rel="preconnect" href="<https://fonts.gstatic.com>" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Serif (Authority) -->
-  <link href="<https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap>" rel="stylesheet">
-
-  <!-- Sans (Clarity) -->
-  <link href="<https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap>" rel="stylesheet">
-
-  <!-- Mono (Systems) -->
-  <link href="<https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap>" rel="stylesheet">
-
-  <style>
-    :root {
-      --paper: #F5F5F0;
-      --ink: #1A1A1A;
-      --muted: #6B6B6B;
-      --accent: #1F3C88; /* Cobalt Blue */
-      --soft: #ECECE7;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.6;
-    }
-
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 64px 32px 96px;
-    }
-
-    .brand {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      margin-bottom: 64px;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 700;
-      line-height: 1.25;
-    }
-
-    h1 {
-      font-size: clamp(28px, 5vw, 48px);
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      font-size: clamp(20px, 3vw, 28px);
-      margin-bottom: 16px;
-    }
-
-    h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--muted);
-      margin: 64px 0;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-    }
-
-    .specs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 48px;
-    }
-
-    .spec {
-      border: 1px solid var(--muted);
-      padding: 32px;
-      transition: border-color 200ms ease, background-color 200ms ease;
-    }
-
-    .spec:hover {
-      border-color: var(--accent);
-      background: var(--soft);
-    }
-
-    .spec.highlight {
-      border-color: var(--accent);
-    }
-
-    .spec.highlight:hover {
-      background: #EDF0F8;
-    }
-
-    .spec-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      letter-spacing: 0.05em;
-      margin-bottom: 16px;
-    }
-
-    ul {
-      padding-left: 18px;
-      margin-top: 12px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    .filter {
-      background: var(--soft);
-      padding: 48px;
-      text-align: left;
-      margin: 96px 0;
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(18px, 2.5vw, 22px);
-      border-left: 3px solid var(--accent);
-    }
-
-    .cta {
-      text-align: center;
-      margin-top: 96px;
-    }
-
-    .cta p {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 22px;
-      margin-bottom: 24px;
-    }
-
-    .cta a {
-      font-family: 'JetBrains Mono', monospace;
-      text-decoration: none;
-      color: var(--ink);
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 4px;
-      letter-spacing: 0.12em;
-      transition: color 150ms, border-color 150ms;
-    }
-
-    .cta a:hover {
-      color: var(--accent);
-      border-color: #162C66;
-    }
-
-    .site-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 48px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      letter-spacing: 0.05em;
-    }
-
-    .site-nav a {
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--muted);
-      padding-bottom: 2px;
-      transition: color 150ms, border-color 150ms;
-    }
-
-    .site-nav a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    @media (max-width: 900px) {
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-
-      .specs {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
 
-  <main class="page">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- NAV -->
+  <header class="page" style="padding-bottom:0;">
     <nav class="site-nav">
-      <span class="brand" style="margin-bottom:0;">MOTIF 54</span>
-      <a href="/projects.html">Projects</a>
+      <a class="brand-link" href="/index.html">MOTIF 54</a>
+      <div class="nav-links">
+        <a href="/intelligence-feed.html">Intelligence Feed</a>
+        <a href="/situation-room.html">Africa Situation Room</a>
+        <a href="/projects.html">Live Projects</a>
+        <a href="/about.html">About</a>
+        <a href="/request-access.html">Request Access</a>
+      </div>
     </nav>
+  </header>
 
-    <!-- SECTION 1: THE BRIEF -->
+  <main class="page" id="main" style="padding-top:0;">
 
-    <h1>African-Owned. Equity-Active. Built for the Long Arc.</h1>
-
-    <p>
-      Africa's next decade of value creation will be decided by who controls the
-      infrastructure beneath it — <strong>natural resources, data infrastructure,
-      and cultural technology</strong> — and whether that ownership accrues inside the
-      continent or drains out of it.
-    </p>
-
-    <p>
-      MOTIF 54 is an African-owned investment and advisory firm. We advise serious
-      capital on entry strategy — and we co-invest, taking equity positions in deals
-      we believe in. <strong>Misallocation risk here is high. Second chances are rare.
-      We operate accordingly.</strong>
-    </p>
-
-    <p>
-      We do not sell analysis. We do not optimize for deal flow volume.<br/>
-      Our work is to ensure that capital — ours and that of aligned partners — does not
-      land in structurally flawed positions. When it lands well, we are often in the deal
-      alongside you.
-    </p>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>See the African capital terrain before consensus arrives.</h1>
+      <p>
+        MOTIF 54 provides intelligence briefs and private situation rooms for investors,
+        institutions, and operators tracking Africa's energy, minerals, compute, AI, and
+        sovereignty stack.
+      </p>
+      <p>
+        We work upstream of transactions, where theses, mandates, vehicles, narratives,
+        and capital relationships are shaped.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="/request-access.html">Request Access</a>
+        <a class="btn btn-ghost" href="/intelligence-feed.html">Explore the Intelligence Feed</a>
+      </div>
+    </section>
 
     <hr/>
 
-    <!-- SECTION 2: THE REALITY -->
-    <div class="two-col">
-      <div>
-        <h2>Who We Are</h2>
-        <p>
-          MOTIF 54 is African-owned. This is a structural choice that shapes every
-          relationship, every mandate, and every deal we enter. We hold equity in assets
-          we believe in, and we advise on entry strategy for capital that is prepared to
-          operate with discipline and patience.
-        </p>
-        <p>
-          <strong>Sid Mofya — Founder</strong><br/>
-          Sid Mofya is a Zambian-born strategist and investor based in Silicon Valley.
-          He is a Kauffman Fellow (Class 19) and former Executive Director of Draper
-          Venture Network, a $2.5 billion global venture alliance spanning 30 funds
-          across six continents. His work spans natural resources, data infrastructure,
-          and capital strategy for African markets — built on 15 years of
-          cross-continental engagement with investors, operators, regulators, and
-          development finance institutions.
-        </p>
-        <p>
-          MOTIF 54 is his expression of a single conviction: that the infrastructure
-          decisions being made in Africa right now will determine who holds value for
-          the next century — and that African-owned firms with structural depth need to
-          be fully at the table.
-        </p>
-      </div>
-
-      <div>
-        <h2>Who This Is For</h2>
-        <p>
-          If you are deploying patient capital — or seeking to co-invest alongside an
-          African-owned firm with sector depth — this is worth a conversation.
-        </p>
-        <p>
-          If your model requires quarterly returns, consultant-style deliverables, or
-          a partner without genuine ownership exposure, we are not the right firm.
-        </p>
-        <p>
-          The deals that produce durable returns in African markets are won in the
-          structuring phase — before capital commits. We work there.
-        </p>
-      </div>
-    </div>
+    <!-- THE PROBLEM -->
+    <section>
+      <div class="eyebrow">The problem</div>
+      <h2>The old Africa map is too shallow for the next capital cycle.</h2>
+      <p>
+        Africa is often analyzed through countries, sectors, headlines, and risk reports.
+      </p>
+      <p>
+        But the next strategic opportunities are forming across systems: energy, minerals,
+        compute, AI, logistics, capital formation, regulation, and sovereignty.
+      </p>
+      <p>
+        MOTIF 54 helps serious capital see the connected terrain before the market has
+        named it.
+      </p>
+    </section>
 
     <hr/>
 
-    <!-- SECTION 3: THE OFFER -->
-    <h2>How We Work Together</h2>
-
-    <div class="specs">
-
-      <div class="spec">
-        <div class="spec-title">AFRICAN SYSTEMS ORIENTATION BRIEF</div>
-        <ul>
-          <li>Sector-by-sector map of where value accrues versus where it transfers out</li>
-          <li>Physical, regulatory, and political constraints — natural resources, data infrastructure, cultural technology</li>
-          <li>Failure modes we observe repeatedly across markets</li>
-          <li>3–5 investable theses actionable within 18–24 months</li>
-        </ul>
+    <!-- TWO WAYS IN -->
+    <section>
+      <div class="eyebrow">Two ways in</div>
+      <h2>Two ways to work with MOTIF 54.</h2>
+      <div class="specs">
+        <div class="offer">
+          <h3>MOTIF 54 Intelligence Feed</h3>
+          <p>
+            A signal and thesis feed tracking Africa's energy, minerals, compute, AI,
+            sovereignty, and capital formation stack.
+          </p>
+          <p>
+            The feed is designed for investors, operators, institutions, and strategic
+            readers who need more than headlines.
+          </p>
+          <div class="offer-cta">
+            <a class="link-mono" href="/intelligence-feed.html">Explore the Intelligence Feed →</a>
+          </div>
+        </div>
+        <div class="offer">
+          <h3>Africa Situation Room</h3>
+          <p>
+            A private decision environment for capital allocators and strategic operators
+            evaluating a specific Africa-linked opportunity, thesis, country, corridor,
+            sector, or partner landscape.
+          </p>
+          <div class="offer-cta">
+            <a class="link-mono" href="/request-access.html">Request a Situation Room →</a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="spec">
-        <div class="spec-title">THESIS-TO-STRUCTURE TRANSLATION</div>
-        <ul>
-          <li>Thesis pressure-tested against local constraints across all three sectors</li>
-          <li>Ranked entry modes — direct acquisition, JV, minority stake, structured debt</li>
-          <li>Partner archetypes that strengthen the deal — and categories that will corrode it</li>
-          <li>12-month decision architecture: proceed / restructure / exit</li>
-        </ul>
+    <hr/>
+
+    <!-- THE STACK -->
+    <section>
+      <div class="eyebrow">The stack we watch</div>
+      <h2>The stack we watch.</h2>
+      <div class="specs cols-3">
+        <div class="spec">
+          <div class="spec-title">ENERGY</div>
+          <p>Power, grids, industrial demand, project finance, and infrastructure constraints.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-title">MINERALS</div>
+          <p>Copper, cobalt, lithium, critical minerals, beneficiation, ownership, and long-term value capture.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-title">COMPUTE</div>
+          <p>Data centers, sovereign compute, AI infrastructure, connectivity, workloads, and data governance.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-title">CAPITAL</div>
+          <p>Family offices, DFIs, strategic investors, venture, project finance, blended finance, and mandate formation.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-title">SOVEREIGNTY</div>
+          <p>Regulation, data localization, industrial policy, state capacity, institutional trust, and control over strategic infrastructure.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-title">NARRATIVE</div>
+          <p>What capital believes, what it ignores, and what becomes investable before consensus forms.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="spec highlight">
-        <div class="spec-title">CAPITAL STACK REALITY CHECK</div>
-        <ul>
-          <li>Where OECD-trained capital assumptions break against African market realities</li>
-          <li>FX repatriation constraints, sovereign risk profiles, and control stress-tests</li>
-          <li>Structures that hold through regulatory change and execution pressure</li>
-          <li>Honest assessment of where your capital profile fits — and where it does not</li>
-        </ul>
+    <hr/>
+
+    <!-- LIVE PROJECTS -->
+    <section>
+      <div class="eyebrow">Live projects</div>
+      <h2>Live projects, not abstract theory.</h2>
+      <p>
+        MOTIF 54's intelligence is shaped by live work in the field. Current projects
+        include sovereign compute infrastructure and energy-transition minerals.
+      </p>
+      <div class="specs">
+        <div class="spec">
+          <div class="spec-title">COPPERCLOUD</div>
+          <p>
+            CopperCloud is a sovereign compute initiative focused on local workload
+            execution, policy enforcement, and verifiable sovereignty receipts in Zambia.
+          </p>
+          <a class="link-mono" href="/projects.html">View CopperCloud →</a>
+        </div>
+        <div class="spec">
+          <div class="spec-title">KAFWEGO</div>
+          <p>
+            Kafwego is an energy-transition minerals project in Zambia focused on copper
+            and related resources critical to electrification, infrastructure, and the next
+            industrial stack.
+          </p>
+          <a class="link-mono" href="/projects.html">View Kafwego →</a>
+        </div>
       </div>
+    </section>
 
-      <div class="spec">
-        <div class="spec-title">CO-INVESTMENT AND EQUITY PARTICIPATION</div>
-        <ul>
-          <li>For opportunities where our assessment warrants direct participation, we co-invest</li>
-          <li>We take equity positions in natural resources, data infrastructure, and cultural technology assets</li>
-          <li>We do not charge advisory fees on deals where we hold equity — our interests are aligned or we are not in the deal</li>
-          <li>JV partners seeking an African-owned co-investor with structural depth: this is the engagement to discuss</li>
-        </ul>
-      </div>
+    <hr/>
 
-    </div>
+    <!-- WHY MOTIF 54 -->
+    <section>
+      <div class="eyebrow">Why MOTIF 54</div>
+      <h2>Built from venture, energy, minerals, compute, and African capital formation.</h2>
+      <p>
+        MOTIF 54 is led by Sid Mofya, former CEO and Director of Draper Venture Network,
+        Kauffman Fellow, and chemical engineer by training.
+      </p>
+      <p>
+        The work combines venture networks, African systems, energy infrastructure,
+        critical minerals, sovereign compute, and strategic capital formation.
+      </p>
+      <p>
+        MOTIF 54 sits close to the places where capital, infrastructure, sovereignty, and
+        narrative meet.
+      </p>
+    </section>
 
-    <!-- SECTION 4: THE FILTER -->
-    <div class="filter">
-      We are selective because our capital and reputation travel with every deal.<br/>
-      If the timeline is short, the thesis is thin, or the ownership model extracts
-      rather than builds — we are not available.
-    </div>
-
-    <!-- SECTION 5: THE GATE -->
+    <!-- FINAL CTA -->
     <div class="cta">
-      <p>If the horizon is long and the ownership model is serious, let's assess fit.</p>
-      <a href="/briefing.html">
-        [ OPEN A CONVERSATION ]
-      </a>
+      <p>Bring a real decision.</p>
+      <p style="font-family:'Inter',sans-serif; font-size:16px; color:var(--muted); max-width:620px; margin:0 auto 24px;">
+        MOTIF 54 is most useful when the stakes are live, the terrain is unclear, and
+        capital needs a better map.
+      </p>
+      <a class="btn" href="/request-access.html">Request Access</a>
     </div>
 
   </main>
+
+  <footer class="site-footer">
+    <div class="foot-brand">MOTIF 54</div>
+    <div class="foot-tag">Capital intelligence for Africa's next strategic stack.</div>
+    <div class="foot-stack">Energy. Minerals. Compute. Capital. Sovereignty.</div>
+    <div class="foot-links">
+      <a href="/intelligence-feed.html">Intelligence Feed</a>
+      <a href="/situation-room.html">Africa Situation Room</a>
+      <a href="/projects.html">Live Projects</a>
+      <a href="/about.html">About</a>
+      <a href="/request-access.html">Request Access</a>
+      <a href="https://www.linkedin.com/company/motif54" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
 
 </body>
 </html>

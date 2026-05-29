@@ -3,254 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects — MOTIF 54</title>
+  <title>Live Projects — MOTIF 54</title>
+  <meta name="description" content="MOTIF 54's intelligence is shaped by live work across sovereign compute, energy-transition minerals, and African capital formation. CopperCloud and Kafwego are live proof points." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Live Projects — MOTIF 54" />
+  <meta property="og:description" content="Live work across sovereign compute, energy-transition minerals, and African capital formation. CopperCloud and Kafwego." />
+  <meta property="og:url" content="https://motif54.com/projects.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Live Projects — MOTIF 54" />
+  <meta name="twitter:description" content="Live work across sovereign compute, energy-transition minerals, and African capital formation." />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="<https://fonts.googleapis.com>">
-  <link rel="preconnect" href="<https://fonts.gstatic.com>" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Serif (Authority) -->
-  <link href="<https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap>" rel="stylesheet">
-
-  <!-- Sans (Clarity) -->
-  <link href="<https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap>" rel="stylesheet">
-
-  <!-- Mono (Systems) -->
-  <link href="<https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap>" rel="stylesheet">
-
-  <style>
-    :root {
-      --paper: #F5F5F0;
-      --ink: #1A1A1A;
-      --muted: #6B6B6B;
-      --accent: #1F3C88;
-      --soft: #ECECE7;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.6;
-    }
-
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 64px 32px 96px;
-    }
-
-    .site-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 48px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      letter-spacing: 0.05em;
-    }
-
-    .site-nav a {
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--muted);
-      padding-bottom: 2px;
-      transition: color 150ms, border-color 150ms;
-    }
-
-    .site-nav a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    h1, h2, h3 {
-      font-family: 'Libre Baskerville', serif;
-      font-weight: 700;
-      line-height: 1.25;
-    }
-
-    h1 {
-      font-size: clamp(28px, 5vw, 48px);
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      font-size: clamp(20px, 3vw, 28px);
-      margin-bottom: 16px;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--muted);
-      margin: 64px 0;
-    }
-
-    .specs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-    }
-
-    .spec {
-      border: 1px solid var(--muted);
-      padding: 32px;
-      transition: border-color 200ms ease, background-color 200ms ease;
-    }
-
-    .spec:hover {
-      border-color: var(--accent);
-      background: var(--soft);
-    }
-
-    .spec-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      letter-spacing: 0.05em;
-      margin-bottom: 16px;
-    }
-
-    .spec-thesis {
-      margin-bottom: 24px;
-    }
-
-    .project-link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      letter-spacing: 0.04em;
-    }
-
-    .project-link a {
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 2px;
-      transition: color 150ms;
-    }
-
-    .project-link a:hover {
-      color: var(--accent);
-    }
-
-    .coming-soon {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      border: 1px solid var(--muted);
-      display: inline-block;
-      padding: 2px 8px;
-    }
-
-    .filter {
-      background: var(--soft);
-      padding: 48px;
-      text-align: left;
-      margin: 96px 0 0;
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(18px, 2.5vw, 22px);
-      border-left: 3px solid var(--accent);
-    }
-
-    .filter a {
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--muted);
-      transition: color 150ms, border-color 150ms;
-    }
-
-    .filter a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    @media (max-width: 900px) {
-      .specs {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
 
-  <main class="page">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- NAV -->
+  <header class="page" style="padding-bottom:0;">
     <nav class="site-nav">
-      <a href="/index.html">← Home</a>
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em;">MOTIF 54</span>
+      <a class="brand-link" href="/index.html">MOTIF 54</a>
+      <div class="nav-links">
+        <a href="/intelligence-feed.html">Intelligence Feed</a>
+        <a href="/situation-room.html">Africa Situation Room</a>
+        <a href="/projects.html" aria-current="page">Live Projects</a>
+        <a href="/about.html">About</a>
+        <a href="/request-access.html">Request Access</a>
+      </div>
     </nav>
+  </header>
 
-    <h1>Projects</h1>
+  <main class="page" id="main" style="padding-top:0;">
 
-    <p>
-      We invest and advise across three sectors where African ownership is structurally
-      underrepresented and where long-horizon capital can compound meaningful advantage.
-    </p>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Live Projects</h1>
+      <p class="lead">
+        MOTIF 54's intelligence is shaped by live work across sovereign compute,
+        energy-transition minerals, and African capital formation.
+      </p>
+    </section>
 
-    <div class="specs">
+    <!-- COPPERCLOUD -->
+    <section class="project">
+      <div class="eyebrow">Sovereign compute</div>
+      <h2>CopperCloud</h2>
+      <p>
+        CopperCloud is a sovereign compute initiative focused on executing workloads
+        locally, enforcing policy constraints, and creating verifiable sovereignty receipts
+        for African data and AI infrastructure.
+      </p>
+      <p>
+        CopperCloud sits at the intersection of sovereign compute, data localization, AI
+        infrastructure, workload orchestration, and digital public infrastructure.
+      </p>
+      <a class="link-mono" href="https://coppercloud.ai" target="_blank" rel="noopener">Visit CopperCloud →</a>
+    </section>
 
-      <div class="spec">
-        <div class="spec-title">NATURAL RESOURCES</div>
-        <p class="spec-thesis">
-          We back early-stage resource projects — minerals, energy, and land — in African
-          jurisdictions where ownership structure and technical discipline are aligned.
-          The value in African natural resources has historically transferred out of the
-          continent at the structuring phase. We work to change that.
-        </p>
-        <div class="project-link">
-          <a href="https://kafwego.netlify.app" target="_blank" rel="noopener">Kafwego →</a>
-        </div>
-      </div>
+    <!-- KAFWEGO -->
+    <section class="project">
+      <div class="eyebrow">Energy-transition minerals</div>
+      <h2>Kafwego</h2>
+      <p>
+        Kafwego is an energy-transition minerals project in Zambia focused on resources
+        critical to electrification, infrastructure, and the next industrial stack.
+      </p>
+      <p>
+        Kafwego sits at the intersection of copper, critical minerals, energy transition
+        demand, African resource ownership, exploration finance, and long-term industrial
+        strategy.
+      </p>
+      <a class="link-mono" href="https://kafwego.netlify.app" target="_blank" rel="noopener">View Kafwego →</a>
+    </section>
 
-      <div class="spec">
-        <div class="spec-title">DATA INFRASTRUCTURE</div>
-        <p class="spec-thesis">
-          African data infrastructure is under-owned by African capital. We invest in and
-          support ventures building the physical and software layer that connects African
-          institutions, markets, and people — with ownership structures that keep value
-          on the continent.
-        </p>
-        <div class="project-link">
-          <a href="https://coppercloud.ai" target="_blank" rel="noopener">CopperCloud →</a>
-        </div>
-      </div>
-
-      <div class="spec">
-        <div class="spec-title">CULTURAL TECHNOLOGY</div>
-        <p class="spec-thesis">
-          Culture is infrastructure. We are building our thesis around African creative
-          and cultural ventures where technology extends reach, ownership, and economic
-          return for African creators and institutions.
-        </p>
-        <div class="coming-soon">Coming soon</div>
-      </div>
-
-    </div>
-
-    <!-- SPONSOR CTA -->
+    <!-- CLOSING -->
     <div class="filter">
-      Leading a project and want to discuss becoming part of MOTIF 54?<br/>
-      <a href="mailto:info@motif54.com">info@motif54.com</a>
+      These projects are not case studies. They are live proof points.<br/>
+      They keep MOTIF 54 close to the field, where theory meets capital, regulation,
+      infrastructure, operators, and execution.
     </div>
 
   </main>
+
+  <footer class="site-footer">
+    <div class="foot-brand">MOTIF 54</div>
+    <div class="foot-tag">Capital intelligence for Africa's next strategic stack.</div>
+    <div class="foot-stack">Energy. Minerals. Compute. Capital. Sovereignty.</div>
+    <div class="foot-links">
+      <a href="/intelligence-feed.html">Intelligence Feed</a>
+      <a href="/situation-room.html">Africa Situation Room</a>
+      <a href="/projects.html">Live Projects</a>
+      <a href="/about.html">About</a>
+      <a href="/request-access.html">Request Access</a>
+      <a href="https://www.linkedin.com/company/motif54" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
 
 </body>
 </html>
