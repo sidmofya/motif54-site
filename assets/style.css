@@ -306,6 +306,24 @@ li { margin-bottom: 10px; }
 }
 .filter a:hover { color: var(--accent); border-color: var(--accent); }
 
+/* ── Legal / disclaimer (understated) ── */
+.legal {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 760px;
+}
+.legal .legal-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */

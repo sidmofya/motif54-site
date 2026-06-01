@@ -5,9 +5,13 @@ The MOTIF 54 website — an editorial, capital-facing static site.
 > **Capital intelligence for Africa's next strategic stack.**
 > Energy. Minerals. Compute. Capital. Sovereignty.
 
-MOTIF 54 surfaces two offers — the **MOTIF 54 Intelligence Feed** and the **Africa
-Situation Room** — and points to two live projects (**CopperCloud**, **Kafwego**) as
-proof points, not offers.
+MOTIF 54 surfaces three offers — the **MOTIF 54 Intelligence Feed**, the **Africa
+Situation Room**, and **Critical Minerals Investment Access** — and points to live projects
+(**CopperCloud**, **Kafwego**, **Valency**) as proof points, not offers.
+
+The Critical Minerals page is the **public layer** only: it routes to the Request Access
+form ("Critical Minerals investor briefing"). The qualified-investor gate, data room,
+pipeline, and terms are a future phase and intentionally not on the public site.
 
 ## Stack
 
@@ -21,7 +25,8 @@ posts to a Google Apps Script web app.
 index.html              Home
 intelligence-feed.html  MOTIF 54 Intelligence Feed
 situation-room.html     Africa Situation Room
-projects.html           Live Projects (CopperCloud, Kafwego)
+critical-minerals.html  Critical Minerals Investment Access
+projects.html           Live Projects (CopperCloud, Kafwego, Valency)
 about.html              About
 request-access.html     Request Access (form)
 briefing.html           Redirect → request-access.html (legacy link)
