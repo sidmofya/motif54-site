@@ -2,12 +2,17 @@
 
 The MOTIF 54 website — an editorial, capital-facing static site.
 
-> **Capital intelligence for Africa's next strategic stack.**
-> Energy. Minerals. Compute. Capital. Sovereignty.
+> **Africa's strategic assets. Made legible.**
+> A trusted decision layer for Africa's strategic assets — critical minerals, energy,
+> infrastructure, and emerging compute.
 
-MOTIF 54 surfaces three offers — the **MOTIF 54 Intelligence Feed**, the **Africa
-Situation Room**, and **Critical Minerals Investment Access** — and points to live projects
-(**CopperCloud**, **Kafwego**, **Valency**) as proof points, not offers.
+MOTIF 54 is positioned as a decision and coordination platform for capital allocators
+(family offices, infrastructure funds, resource investors, sovereign and development
+capital, strategic corporates). The homepage frames three capabilities — **Strategic Asset
+Intelligence**, **Project Verification**, and **Decision Rooms** — a five-part verification
+framework, and live strategic asset cases (**CopperCloud**, **Kafwego**). Three calls to
+action route to the Request Access form: *Request an Intelligence Briefing*, *Submit an
+Opportunity*, *Join a Decision Room*.
 
 The Critical Minerals page is the **public layer** only: it routes to the Request Access
 form ("Critical Minerals investor briefing"). The qualified-investor gate, data room,
@@ -22,16 +27,16 @@ posts to a Google Apps Script web app.
 ## Structure
 
 ```
-index.html              Home
-intelligence-feed.html  MOTIF 54 Intelligence Feed
-situation-room.html     Africa Situation Room
-critical-minerals.html  Critical Minerals Investment Access
-projects.html           Live Projects (CopperCloud, Kafwego, Valency)
-about.html              About
-request-access.html     Request Access (form)
-briefing.html           Redirect → request-access.html (legacy link)
-assets/style.css        Shared stylesheet (design tokens, nav, footer, components)
-apps-script.gs          Google Apps Script that receives the form POST
+index.html                          Home (10-section platform IA)
+strategic-asset-intelligence.html   Strategic Asset Intelligence (was intelligence-feed.html)
+decision-rooms.html                 High-Consequence Decision Rooms (was situation-room.html)
+critical-minerals.html              Critical Minerals Investment Access
+projects.html                       Live Strategic Asset Cases (CopperCloud, Kafwego)
+about.html                          About
+request-access.html                 Request Access (form; ?type= pre-selects an intent)
+briefing.html                       Redirect → request-access.html (legacy link)
+assets/style.css                    Shared stylesheet (design tokens, nav, footer, components)
+apps-script.gs                      Google Apps Script that receives the form POST
 ```
 
 ## Design system
@@ -85,9 +90,12 @@ Recommended: **Git-based continuous deploy** so every push to the production bra
    (Netlify DNS, or an `ALIAS`/`A` + `CNAME www`) per Netlify's instructions; HTTPS is
    provisioned automatically.
 
-`netlify.toml` also 301-redirects the legacy `/briefing.html` to `/request-access.html`
-and sets basic security + asset-caching headers.
+`netlify.toml` also 301-redirects the legacy `/briefing.html`, `/situation-room.html`, and
+`/intelligence-feed.html` to their current destinations, and sets basic security +
+asset-caching headers.
 
 ## Notes
 
-- Site copy is **v0.1 temporary design copy** — voice will be sharpened in a later pass.
+- Copy reflects the **decision-layer repositioning** (investor/decision voice; identify,
+  verify, access). Earlier "capital intelligence studio / Intelligence Feed / Situation
+  Room" framing has been retired.

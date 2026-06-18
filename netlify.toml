@@ -13,6 +13,19 @@
   status = 301
   force = true
 
+# Renamed pages — preserve old URLs that may be linked or indexed.
+[[redirects]]
+  from = "/situation-room.html"
+  to = "/decision-rooms.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/intelligence-feed.html"
+  to = "/strategic-asset-intelligence.html"
+  status = 301
+  force = true
+
 # Security / caching headers
 [[headers]]
   for = "/*"
