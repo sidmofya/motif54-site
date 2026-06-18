@@ -62,22 +62,13 @@
             <span class="bf-question">Select one<span class="bf-req">*</span></span>
             <div class="bf-radio-group" id="bf-request-group">
               <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Intelligence Briefing" data-type="intelligence"> Request an Intelligence Briefing
+                <input type="radio" name="request_type" value="Strategic asset intelligence" data-type="intelligence"> I am seeking strategic asset intelligence
               </label>
               <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Submit an Opportunity" data-type="opportunity"> Submit an Opportunity
+                <input type="radio" name="request_type" value="Evaluating an opportunity" data-type="opportunity"> I am evaluating an opportunity
               </label>
               <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Decision Room" data-type="decision-room"> Join a Decision Room
-              </label>
-              <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Critical Minerals investor briefing" data-type="minerals"> Critical Minerals investor briefing
-              </label>
-              <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Private briefing"> Private briefing
-              </label>
-              <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Other"> Other
+                <input type="radio" name="request_type" value="Join a decision room" data-type="decision-room"> I would like to join a decision room
               </label>
             </div>
           </div>
@@ -196,12 +187,15 @@
     var form = document.getElementById('bf-form');
     var successEl = document.getElementById('bf-success');
 
-    /* Pre-select a request type from ?type= (set by homepage / page CTAs). */
+    /* Pre-select a request type from ?type= (set by homepage / page CTAs).
+       Finer-grained sources (e.g. minerals) map onto the three visible paths. */
     (function preselectRequestType() {
       var params = new URLSearchParams(window.location.search);
       var type = params.get('type');
       if (!type) return;
-      var match = form.querySelector('input[name="request_type"][data-type="' + type + '"]');
+      var typeMap = { intelligence: 'intelligence', opportunity: 'opportunity', 'decision-room': 'decision-room', minerals: 'opportunity' };
+      var dt = typeMap[type] || type;
+      var match = form.querySelector('input[name="request_type"][data-type="' + dt + '"]');
       if (match) match.checked = true;
     })();
 

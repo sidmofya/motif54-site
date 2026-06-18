@@ -351,6 +351,57 @@ li { margin-bottom: 10px; }
 .cta-path .offer-cta { margin-top: auto; padding-top: 16px; }
 
 /* ============================================================
+   POSITIONING LINE + CREDIBILITY STRIP  (below hero)
+   ============================================================ */
+.positioning { margin-top: 8px; }
+
+.positioning-line {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(19px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 780px;
+  margin: 0 0 40px;
+}
+
+.cred-strip {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+}
+.cred-intro {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0 0 20px;
+  max-width: 780px;
+}
+.cred-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cred-points li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+.cred-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+}
+
+/* ============================================================
    CALLOUT / FILTER
    ============================================================ */
 .filter {
