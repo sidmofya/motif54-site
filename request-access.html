@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Request Access — MOTIF 54</title>
-  <meta name="description" content="Request an intelligence briefing, submit an opportunity, or join a decision room. MOTIF 54 works best when there is a real decision, thesis, or capital question on the table." />
+  <title>Request a Gate Diagnostic | MOTIF 54</title>
+  <meta name="description" content="A gate diagnostic is a short, fixed-scope read on whether a specific deal's equity gate can close, what closing it requires, and on what timeline." />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Request Access — MOTIF 54" />
-  <meta property="og:description" content="Request an intelligence briefing, submit an opportunity, or join a decision room. Share what you are evaluating." />
+  <meta property="og:title" content="Request a Gate Diagnostic | MOTIF 54" />
+  <meta property="og:description" content="A short, fixed-scope read on whether a specific deal's equity gate can close, what closing it requires, and on what timeline." />
   <meta property="og:url" content="https://motif54.com/request-access.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Request Access — MOTIF 54" />
-  <meta name="twitter:description" content="Request an intelligence briefing, submit an opportunity, or join a decision room." />
+  <meta name="twitter:title" content="Request a Gate Diagnostic | MOTIF 54" />
+  <meta name="twitter:description" content="A short, fixed-scope read on whether a specific deal's equity gate can close, what closing it requires, and on what timeline." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,11 +43,11 @@
 
     <!-- HERO -->
     <section class="hero">
-      <h1>Request access</h1>
+      <h1>Request a gate diagnostic.</h1>
       <p class="lead">
-        MOTIF 54 works best when there is a real decision, thesis, opportunity, or capital
-        question on the table — whether you are an investor seeking visibility or a project
-        sponsor seeking evaluation. Use this form to tell us what you are working on.
+        A gate diagnostic is a short, fixed-scope read on whether a specific deal's equity
+        gate can close, what closing it requires, and on what timeline. It commits nothing
+        further. Tell us about the deal.
       </p>
     </section>
 
@@ -57,18 +57,18 @@
 
         <!-- What are you requesting? -->
         <div class="bf-section">
-          <div class="bf-section-label">What are you requesting?</div>
+          <div class="bf-section-label">Which best describes you?</div>
           <div class="bf-field">
             <span class="bf-question">Select one<span class="bf-req">*</span></span>
             <div class="bf-radio-group" id="bf-request-group">
               <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Strategic asset intelligence" data-type="intelligence"> I am seeking strategic asset intelligence
+                <input type="radio" name="request_type" value="Sponsor with a stalled deal" data-type="opportunity"> I hold a deal that has stalled at the equity gate
               </label>
               <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Evaluating an opportunity" data-type="opportunity"> I am evaluating an opportunity
+                <input type="radio" name="request_type" value="Lender or DFI with an equity gap" data-type="lender"> I hold debt blocked by an unfilled equity layer
               </label>
               <label class="bf-radio-option">
-                <input type="radio" name="request_type" value="Join a decision room" data-type="decision-room"> I would like to join a decision room
+                <input type="radio" name="request_type" value="Equity provider" data-type="equity"> I can provide gating equity behind committed debt
               </label>
             </div>
           </div>
@@ -109,8 +109,8 @@
           <div class="bf-section-label">The decision</div>
 
           <div class="bf-field">
-            <label class="bf-question" for="bf-evaluating">What are you evaluating?<span class="bf-req">*</span></label>
-            <p class="bf-hint">The thesis, opportunity, geography, or capital question on the table.</p>
+            <label class="bf-question" for="bf-evaluating">Tell us about the deal<span class="bf-req">*</span></label>
+            <p class="bf-hint">The asset, the debt already interested, and where it has stalled.</p>
             <textarea class="bf-textarea" id="bf-evaluating" name="evaluating" rows="5" required></textarea>
           </div>
 
@@ -163,13 +163,13 @@
 
   <footer class="site-footer">
     <div class="foot-brand">MOTIF 54</div>
-    <div class="foot-tag">A trusted decision layer for Africa's strategic assets.</div>
-    <div class="foot-stack">Critical minerals. Energy. Infrastructure. Compute.</div>
+    <div class="foot-tag">We close the equity gate in African energy, minerals, and infrastructure.</div>
+    <div class="foot-stack">Energy. Minerals. Infrastructure.</div>
     <div class="foot-links">
       <a href="/strategic-asset-intelligence.html">Strategic Asset Intelligence</a>
       <a href="/decision-rooms.html">Decision Rooms</a>
       <a href="/critical-minerals.html">Critical Minerals</a>
-      <a href="/projects.html">Strategic Asset Cases</a>
+      <a href="/projects.html">Participation</a>
       <a href="/about.html">About</a>
       <a href="/request-access.html">Request Access</a>
       <a href="https://www.linkedin.com/in/sidmofya" target="_blank" rel="noopener">LinkedIn</a>
@@ -193,7 +193,7 @@
       var params = new URLSearchParams(window.location.search);
       var type = params.get('type');
       if (!type) return;
-      var typeMap = { intelligence: 'intelligence', opportunity: 'opportunity', 'decision-room': 'decision-room', minerals: 'opportunity' };
+      var typeMap = { opportunity: 'opportunity', sponsor: 'opportunity', lender: 'lender', equity: 'equity', intelligence: 'opportunity', 'decision-room': 'opportunity', minerals: 'opportunity' };
       var dt = typeMap[type] || type;
       var match = form.querySelector('input[name="request_type"][data-type="' + dt + '"]');
       if (match) match.checked = true;
@@ -219,7 +219,7 @@
       });
 
       fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd })
-        .catch(function() { /* no-cors response is always opaque — treat as success */ });
+        .catch(function() { /* no-cors response is always opaque, so treat as success */ });
 
       form.classList.add('hidden');
       successEl.classList.remove('hidden');
