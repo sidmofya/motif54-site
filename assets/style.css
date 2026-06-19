@@ -167,11 +167,16 @@ hr {
 }
 
 .site-nav .brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--fg);
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
+.brand-mark { display: block; flex: 0 0 auto; }
+.brand-word { display: inline-block; }
 
 .nav-links {
   display: flex;
@@ -544,6 +549,7 @@ li::marker { color: var(--accent-2); }
   letter-spacing: 0.04em;
   color: var(--fg-dim);
 }
+.site-footer .foot-mark { display: block; margin-bottom: 16px; }
 .site-footer .foot-brand {
   color: var(--fg);
   font-size: 13px;
