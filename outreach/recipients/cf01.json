@@ -1,0 +1,37 @@
+{
+  "code": "cf01",
+  "company": "Gridworks",
+  "first_name": "Chris",
+  "recipient_role": "Transmission developer",
+  "prepared_for": "PREPARED FOR GRIDWORKS",
+  "subhead": "For Chris at Gridworks.",
+  "hero_para": "You build the transmission most developers won’t touch. On those assets the senior debt is rarely the hold up. It’s the layer beneath it: the first-loss equity that has to be in place before BII or a DFI guarantee will anchor. I structure that layer and bring the equity together, without taking the asset.",
+  "subnote": "Twenty minutes. On one of your own asset types.",
+  "video_caption": "A personal note from Sid Mofya at MOTIF 54.",
+  "video_slides": [
+    "Hey Chris.",
+    "The senior debt is rarely the hold up.",
+    "It’s the layer underneath. The pre-bankable equity.",
+    "I close the gate. So the capital can move."
+  ],
+  "why_para": "Gridworks builds the transmission most developers won’t touch, in markets where that first-loss layer is the hardest piece to bring together. Structuring it and closing it, without taking the asset, is what I do. I would rather show you on one of your own asset types than describe it.",
+  "positioning_para": "I do not lend, and I do not take the asset. I close the gate: I structure the first-loss equity that committed debt needs to draw and bring it together, and I stay until it is in place. That is the whole job.",
+  "sections": [
+    {
+      "title": "Where the time actually goes",
+      "body": "On the transmission and DFI-distribution assets you build, the senior debt and the DFI guarantees tend to arrive late: they need a first-loss layer already in place to anchor to. Bringing that layer together, before the rest of the stack will move, is usually where the time goes."
+    },
+    {
+      "title": "Structure, not capital",
+      "body": "You have BII on the cap table and structuring muscle in-house, so this is not about capital you cannot reach. The seam that still bites is bringing that first-loss layer together to the point the machinery will commit. I establish whether the gate can close, structure the equity, and bring it together, keeping you inside the structure. I do not lend it, and I do not take the asset."
+    },
+    {
+      "title": "The equity nobody else will hold",
+      "body": "Across energy, minerals and infrastructure, it is the equity a lender cannot hold and a sponsor cannot easily raise. I establish whether the gate can close, structure the equity that closes it, and bring it together, keeping the local and sovereign owner inside the structure, so committed debt can deploy. I do not lend it, and I do not take the asset."
+    }
+  ],
+  "closing_sub": "No deck. I’ll walk you through where the gate sits on an asset like yours, and how I would close it.",
+  "cta_label": "Twenty minutes with me, no deck",
+  "cta_url": "https://www.linkedin.com/in/sidmofya",
+  "created": "2026-06-27"
+}

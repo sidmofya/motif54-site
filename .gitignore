@@ -1,0 +1,11 @@
+# Generated outreach pages — built by `node outreach/build.mjs` at deploy time
+/r/
+
+# Remotion video project
+outreach/video/node_modules/
+outreach/video/out/
+outreach/video/public/take.mp4
+
+# Misc
+.DS_Store
+node_modules/

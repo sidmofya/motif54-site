@@ -1,9 +1,15 @@
 # Netlify configuration for motif54.com
-# Static site — no build step. The repository root IS the published site.
+# Static site. The repository root IS the published site. The only build step
+# is the outreach microsite generator, which renders /r/<code>/ pages from
+# outreach/recipients/*.json (see outreach/README.md). It is a no-op when there
+# are no recipients, so the rest of the site stays effectively buildless.
+#
+# Set OUTREACH_TRACKING_ENDPOINT in the Netlify site env to wire the view beacon
+# to the Apps Script web app (same URL pattern as the request-access form).
 
 [build]
   publish = "."
-  command = ""
+  command = "node outreach/build.mjs"
 
 # Send the legacy briefing URL to the new Request Access page with a real
 # 301 (the in-page meta refresh in briefing.html stays as a fallback).
@@ -33,6 +39,13 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Personalized outreach pages are private 1:1 links — keep them out of search
+# indexes and link previews from being crawled.
+[[headers]]
+  for = "/r/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
   for = "/assets/*"

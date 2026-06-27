@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{first_name}} · MOTIF 54</title>
+  <meta name="description" content="Prepared for {{company}}. A personal note from Sid Mofya at MOTIF 54." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{first_name}} · MOTIF 54" />
+  <meta property="og:description" content="Prepared for {{company}}. A personal note from Sid Mofya at MOTIF 54." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <link rel="icon" href="/assets/logo/motif54-appicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo/motif54-appicon.svg">
+
+  <style>
+    /* ── Outreach microsite — scoped layer on the shared design tokens ── */
+    .o-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 96px; }
+
+    /* Sticky header: brand + persistent CTA pill */
+    .o-bar {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 14px 24px;
+      background: rgba(10,10,12,.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .o-bar .brand-word { font-family: var(--font-display); font-weight: 700; letter-spacing: .04em; font-size: 18px; color: var(--fg); }
+    .o-bar .brand-word b { color: var(--accent); font-weight: 700; }
+    .o-pill {
+      display: inline-block; padding: 10px 16px; border-radius: var(--r-btn);
+      background: var(--accent); color: var(--bg);
+      font-family: var(--font-display); font-weight: 600; font-size: 14px; line-height: 1.25;
+      text-decoration: none; max-width: 56vw;
+    }
+    .o-pill:hover { background: var(--accent-deep); color: var(--bg); }
+
+    .o-prepared {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent); margin: 56px 0 14px;
+    }
+    .o-sub { color: var(--fg-dim); margin: 0 0 18px; }
+    .o-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(44px, 12vw, 80px); line-height: .98; letter-spacing: -.02em; color: var(--fg); margin: 0 0 22px; }
+    .o-hero-para { font-size: clamp(17px, 2.4vw, 21px); color: var(--fg); line-height: 1.5; margin: 0 0 28px; }
+
+    .o-cta-block { display: flex; flex-direction: column; gap: 12px; margin: 28px 0 10px; }
+    .o-cta-primary {
+      display: block; text-align: center; padding: 18px 20px; border-radius: var(--r-btn);
+      background: var(--accent); color: var(--bg);
+      font-family: var(--font-display); font-weight: 600; font-size: 17px; text-decoration: none;
+    }
+    .o-cta-primary:hover { background: var(--accent-deep); color: var(--bg); }
+    .o-cta-ghost {
+      display: block; text-align: center; padding: 18px 20px; border-radius: var(--r-btn);
+      background: transparent; color: var(--fg); border: 1px solid var(--line-2);
+      font-family: var(--font-display); font-weight: 500; font-size: 16px; text-decoration: none;
+    }
+    .o-cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .o-subnote { color: var(--fg-dim); font-size: 15px; margin: 14px 0 0; }
+
+    /* Video */
+    .o-video { margin: 40px 0 8px; }
+    .o-video video, .o-video .o-video-fallback {
+      width: 100%; border: 1px solid var(--line); border-radius: var(--r-card); background: #000; display: block;
+    }
+    .o-video-fallback { aspect-ratio: 16/9; display: grid; place-items: center; color: var(--fg-dim); font-family: var(--font-mono); font-size: 13px; text-align: center; padding: 24px; }
+    .o-video-cap { color: var(--fg-dim); font-style: italic; font-size: 14px; margin: 12px 2px 0; }
+
+    /* Why-I-reached-out card */
+    .o-why {
+      border: 1px solid var(--line); border-left: 3px solid var(--accent);
+      border-radius: var(--r-card); background: var(--bg-1);
+      padding: 28px 26px; margin: 48px 0 28px;
+    }
+    .o-why .o-eyebrow {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent); margin: 0 0 16px;
+    }
+    .o-why p { font-size: clamp(18px, 2.6vw, 23px); color: var(--fg); line-height: 1.45; margin: 0 0 22px; font-weight: 500; }
+    .o-author { display: flex; align-items: center; gap: 14px; }
+    .o-author img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; background: var(--bg-2); }
+    .o-author .o-author-name { color: var(--fg); font-weight: 600; }
+    .o-author .o-author-title { color: var(--fg-dim); font-size: 14px; }
+
+    .o-positioning { font-size: clamp(17px, 2.4vw, 21px); color: var(--fg); line-height: 1.5; margin: 0 0 8px; }
+
+    /* Numbered sections */
+    .o-sections { margin: 48px 0; display: flex; flex-direction: column; gap: 16px; }
+    .o-section { border: 1px solid var(--line); border-radius: var(--r-card); background: var(--bg-1); padding: 28px 26px; }
+    .o-section .o-num {
+      display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 4px;
+      background: var(--accent); color: var(--bg);
+      font-family: var(--font-mono); font-weight: 700; font-size: 20px; margin-bottom: 20px;
+    }
+    .o-section h3 { font-size: 22px; color: var(--fg); margin: 0 0 12px; }
+    .o-section p { color: var(--fg-muted); margin: 0; line-height: 1.6; }
+
+    /* Closing CTA card */
+    .o-close { border: 1px solid var(--line); border-radius: var(--r-card); background: var(--bg-1); padding: 40px 28px; text-align: center; margin: 48px 0; }
+    .o-close h2 { font-size: clamp(30px, 7vw, 44px); color: var(--fg); margin: 0 0 16px; letter-spacing: -.01em; }
+    .o-close .o-close-sub { color: var(--fg-muted); font-size: 17px; max-width: 46ch; margin: 0 auto 26px; line-height: 1.5; }
+    .o-close .o-cta-block { max-width: 420px; margin: 0 auto; }
+
+    .o-foot { text-align: center; color: var(--fg-dim); padding: 32px 0 8px; }
+    .o-foot .o-foot-brand { font-family: var(--font-display); font-weight: 700; letter-spacing: .04em; color: var(--fg); margin-bottom: 10px; }
+    .o-foot .o-foot-brand b { color: var(--accent); }
+    .o-foot .o-foot-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 12px; }
+    .o-foot a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+  <header class="o-bar">
+    <span class="brand-word">MOTIF <b>54</b></span>
+    <a class="o-pill" href="{{cta_url}}">{{cta_label}} →</a>
+  </header>
+
+  <main class="o-wrap">
+
+    <!-- HERO -->
+    <p class="o-prepared">{{prepared_for}}</p>
+    <p class="o-sub">{{subhead}}</p>
+    <h1 class="o-name">{{first_name}}.</h1>
+    <p class="o-hero-para">{{hero_para}}</p>
+
+    <div class="o-cta-block">
+      <a class="o-cta-primary" href="{{cta_url}}">{{cta_label}} →</a>
+      <a class="o-cta-ghost" href="https://motif54.com">More on MOTIF 54</a>
+    </div>
+    <p class="o-subnote">{{subnote}}</p>
+
+    <!-- VIDEO -->
+    <div class="o-video">
+      <video controls preload="metadata" playsinline poster="video-poster.jpg" id="o-note">
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+      <p class="o-video-cap">{{video_caption}}</p>
+    </div>
+
+    <!-- WHY I REACHED OUT -->
+    <section class="o-why">
+      <p class="o-eyebrow">Why I reached out</p>
+      <p>{{why_para}}</p>
+      <div class="o-author">
+        <img src="/assets/sid.jpg" alt="Sid Mofya" onerror="this.style.display='none'" />
+        <div>
+          <div class="o-author-name">Sid Mofya</div>
+          <div class="o-author-title">Founder &amp; CEO, MOTIF 54</div>
+        </div>
+      </div>
+    </section>
+
+    <p class="o-positioning">{{positioning_para}}</p>
+
+    <!-- NUMBERED ARGUMENT -->
+    <section class="o-sections">
+      <!--SECTIONS-->
+      <article class="o-section">
+        <span class="o-num">{{n}}</span>
+        <h3>{{title}}</h3>
+        <p>{{body}}</p>
+      </article>
+      <!--/SECTIONS-->
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="o-close">
+      <h2>Twenty minutes, {{first_name}}.</h2>
+      <p class="o-close-sub">{{closing_sub}}</p>
+      <div class="o-cta-block">
+        <a class="o-cta-primary" href="{{cta_url}}">{{cta_label}} →</a>
+        <a class="o-cta-ghost" href="https://www.linkedin.com/in/sidmofya">Find Sid on LinkedIn</a>
+      </div>
+    </section>
+
+    <footer class="o-foot">
+      <div class="o-foot-brand">MOTIF <b>54</b></div>
+      <div class="o-foot-meta">MOTIF 54 · San Francisco · motif54.com</div>
+      <div>
+        <a href="https://www.linkedin.com/in/sidmofya">Sid on LinkedIn</a>
+        <a href="https://motif54.com">motif54.com</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    /*
+     * View beacon — mirrors the no-cors POST pattern used in request-access.html.
+     * Reports an open, then video-progress milestones, to the Apps Script backend.
+     * TRACKING_ENDPOINT is injected by build.mjs; if empty, tracking is a no-op.
+     */
+    (function () {
+      var ENDPOINT = '{{tracking_endpoint}}';
+      var CODE = '{{code}}', COMPANY = '{{company}}', FIRST = '{{first_name}}';
+      if (!ENDPOINT) return;
+
+      function send(event, extra) {
+        try {
+          var fd = new FormData();
+          fd.append('event', event);
+          fd.append('code', CODE);
+          fd.append('company', COMPANY);
+          fd.append('first_name', FIRST);
+          fd.append('referrer', document.referrer || '');
+          if (extra) Object.keys(extra).forEach(function (k) { fd.append(k, extra[k]); });
+          fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd }).catch(function () {});
+        } catch (e) {}
+      }
+
+      send('view');
+
+      var v = document.getElementById('o-note');
+      if (v) {
+        var hit = {};
+        v.addEventListener('timeupdate', function () {
+          if (!v.duration) return;
+          var pct = v.currentTime / v.duration;
+          [0.25, 0.5, 0.9].forEach(function (m) {
+            if (pct >= m && !hit[m]) { hit[m] = true; send('video', { milestone: Math.round(m * 100) + '%' }); }
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
