@@ -240,6 +240,50 @@ doctrine), Jason Cohen (*A Smart Bear* strategy essays), Paul Graham (essays).
 
 ---
 
+## 4b. Starter repo, in depth — the one to fork
+
+If you want a single concrete thing to work off of, it's the **`til` pattern**. Here's the
+recommendation made actionable (still reference-only — no changes to the live site).
+
+**Recommended:** **[`simonw/til`](https://github.com/simonw/til)** — fork it directly, or
+rebuild its ~50-line GitHub Action into a fresh repo.
+
+**Why this one over the alternatives:**
+
+| Option | What it is | Verdict for MOTIF |
+|---|---|---|
+| **`simonw/til`** ✅ | Markdown → GitHub Action → self-updating index + searchable Datasette site | **Pick this.** Lowest lift, "shipping = publishing," and the Datasette layer gives a *searchable, queryable* feed — which matches "intelligence feed," not "blog." |
+| [Quartz](https://github.com/jackyzha0/quartz) | Obsidian/markdown → static digital-garden site | Prettier out of the box, but garden/wiki-shaped, no query layer. Good if you want backlinks over search. |
+| Astro content collections | Typed markdown/MDX → static site | Most control, but it's a *framework adoption*, not a fork — more build than you asked for. |
+
+**How `simonw/til` actually works (the mechanism you're forking):**
+
+1. You write a markdown file in a topic folder (e.g. `critical-minerals/zambia-cobalt.md`).
+2. On push, a [GitHub Action](https://simonwillison.net/2020/Apr/20/self-rewriting-readme/)
+   parses every markdown file, builds a SQLite DB (`til.db`), and **rewrites the README
+   index** so it always lists every entry (it skips its own README commits to avoid loops).
+3. The same Action publishes `til.db` to a [Datasette](https://github.com/simonw/datasette)
+   instance (Vercel/Fly), giving you a **full-text-searchable** site over your notes — with a
+   custom `index.html` template for the public landing page.
+
+**Net effect:** the act of committing a note *is* the act of publishing a searchable,
+indexed, public artifact. That's the propagation loop from §3B, automated.
+
+**A 5-step evaluation path (before committing to it):**
+
+1. Fork `simonw/til`; read the workflow in `.github/workflows/`.
+2. Replace his topic folders with MOTIF's (energy / minerals / compute / capital /
+   sovereignty); drop in 2–3 real notes.
+3. Confirm the Action regenerates the README index on push.
+4. Stand up the Datasette site on Vercel/Fly; confirm search works over your notes.
+5. Decide: does a *queryable feed* read as "intelligence," or do you want the editorial
+   polish of the current static pages? (This is the real fork in the road — see §5.)
+
+**Honest caveats:** Datasette's default UI is utilitarian, not editorial — it'll look like a
+data tool, not like the current MOTIF site, unless you template it. And it adds a hosting
+dependency (Vercel/Fly + the Action) to a repo that today has *zero* build step. Those are the
+tradeoffs against the static-HTML simplicity you have now.
+
 ## 5. Bottom line for MOTIF 54
 
 - **Best single fit to the framing:** **Simon Willison** — he runs both bottlenecks as one
