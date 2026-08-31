@@ -57,6 +57,7 @@ body {
   background-attachment: fixed;
   color: var(--fg-muted);
   font-family: var(--font-display);
+  font-size: 17.5px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -106,7 +107,7 @@ h2 {
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 19px;
   letter-spacing: -.012em;
   margin-bottom: 12px;
 }
@@ -126,7 +127,7 @@ hr {
 .lead {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(17px, 2.2vw, 20px);
+  font-size: clamp(18px, 2.4vw, 22px);
   line-height: 1.55;
   color: var(--fg);
 }
@@ -208,7 +209,7 @@ hr {
    ============================================================ */
 .hero { margin-bottom: 8px; }
 
-.hero p { font-size: clamp(16px, 2vw, 19px); }
+.hero p { font-size: clamp(17px, 2.1vw, 21px); }
 
 /* ── CTA buttons / links ── */
 .cta-row {
@@ -368,8 +369,8 @@ li::marker { color: var(--accent-2); }
   transition: border-color 200ms ease, background-color 200ms ease;
 }
 .audience:hover { border-color: var(--accent); background: var(--bg-2); }
-.audience h3 { font-size: 16px; margin-bottom: 8px; }
-.audience p { font-size: 14px; color: var(--fg-muted); margin-bottom: 0; }
+.audience h3 { font-size: 17px; margin-bottom: 8px; }
+.audience p { font-size: 15px; color: var(--fg-muted); margin-bottom: 0; }
 
 /* ============================================================
    VERIFICATION SCORECARD
@@ -415,7 +416,7 @@ li::marker { color: var(--accent-2); }
 }
 .cta-path:hover { border-color: var(--accent); background: var(--bg-2); }
 .cta-path h3 { margin-bottom: 12px; }
-.cta-path p { font-size: 14px; color: var(--fg-muted); }
+.cta-path p { font-size: 15px; color: var(--fg-muted); }
 .cta-path .offer-cta { margin-top: auto; padding-top: 16px; }
 
 /* ============================================================
@@ -440,7 +441,7 @@ li::marker { color: var(--accent-2); }
   padding: 28px 0;
 }
 .cred-intro {
-  font-size: 15px;
+  font-size: 16.5px;
   color: var(--fg-muted);
   margin: 0 0 20px;
   max-width: 780px;
@@ -456,7 +457,7 @@ li::marker { color: var(--accent-2); }
 .cred-points li {
   position: relative;
   padding-left: 18px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   color: var(--fg);
   margin: 0;
@@ -520,7 +521,7 @@ li::marker { color: var(--accent-2); }
   margin-top: 64px;
   padding-top: 24px;
   border-top: 1px solid var(--line);
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 1.6;
   color: var(--fg-dim);
   max-width: 760px;
@@ -599,14 +600,14 @@ li::marker { color: var(--accent-2); }
 .bf-question {
   display: block;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   line-height: 1.4;
   color: var(--fg);
   margin-bottom: 6px;
 }
 .bf-req { color: var(--accent); margin-left: 2px; }
-.bf-hint { font-size: 14px; color: var(--fg-muted); margin: 0 0 12px; }
+.bf-hint { font-size: 15px; color: var(--fg-muted); margin: 0 0 12px; }
 
 .bf-textarea,
 .bf-input,
@@ -614,9 +615,9 @@ li::marker { color: var(--accent-2); }
   width: 100%;
   border: 1px solid var(--line-2);
   border-radius: var(--r-btn);
-  padding: 11px 14px;
+  padding: 12px 14px;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 16.5px;
   color: var(--fg);
   background: var(--bg-1);
   outline: none;
@@ -645,9 +646,9 @@ li::marker { color: var(--accent-2); }
   gap: 12px;
   border: 1px solid var(--line);
   border-radius: var(--r-btn);
-  padding: 11px 16px;
+  padding: 12px 16px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16.5px;
   color: var(--fg);
   transition: border-color 200ms ease, background 200ms ease;
   user-select: none;
@@ -683,9 +684,9 @@ li::marker { color: var(--accent-2); }
   padding: 40px 48px;
   max-width: 680px;
 }
-.bf-success p { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--fg); margin: 0 0 12px; }
+.bf-success p { font-family: var(--font-display); font-weight: 500; font-size: 19.5px; color: var(--fg); margin: 0 0 12px; }
 .bf-success p:last-child { margin: 0; }
-.bf-success .bf-success-sub { font-family: var(--font-display); font-weight: 400; font-size: 15px; color: var(--fg-muted); }
+.bf-success .bf-success-sub { font-family: var(--font-display); font-weight: 400; font-size: 16.5px; color: var(--fg-muted); }
 
 .hidden { display: none; }
 
@@ -834,7 +835,7 @@ select:focus-visible {
   transition: border-color 200ms ease, background-color 200ms ease;
 }
 .card:hover { border-color: var(--accent); background: var(--bg-2); }
-.card h3 { font-size: clamp(19px, 2.2vw, 23px); margin-bottom: 12px; }
+.card h3 { font-size: clamp(20px, 2.3vw, 24px); margin-bottom: 12px; }
 .card p { color: var(--fg-muted); }
 .card p:last-of-type { margin-bottom: 0; }
 
@@ -862,11 +863,11 @@ select:focus-visible {
 
 /* .spec gains the same column flow so its CTAs align too */
 .spec { display: flex; flex-direction: column; }
-.spec ul { font-size: 14px; margin-bottom: 0; }
+.spec ul { font-size: 15px; margin-bottom: 0; }
 .spec ul li { color: var(--fg-muted); }
 
 /* Rule-topped rows gain a heading */
-.row-item h3 { font-size: 16px; margin-bottom: 8px; }
+.row-item h3 { font-size: 17px; margin-bottom: 8px; }
 
 /* A row of text CTAs under a section */
 .link-row {
@@ -920,12 +921,12 @@ select:focus-visible {
 .path-card[aria-pressed="true"] { border-color: var(--accent); background: var(--bg-2); }
 .path-card .card-label { margin-bottom: 12px; }
 .path-card h2,
-.path-card h3 { font-size: 17px; margin-bottom: 8px; letter-spacing: -.012em; }
-.path-card p { font-size: 14px; line-height: 1.55; margin: 0; }
+.path-card h3 { font-size: 18px; margin-bottom: 8px; letter-spacing: -.012em; }
+.path-card p { font-size: 15px; line-height: 1.55; margin: 0; }
 
 /* Quiet notes around the form */
 .bf-note {
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 1.6;
   color: var(--fg-dim);
   margin: 16px 0 0;
