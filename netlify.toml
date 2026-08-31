@@ -5,26 +5,120 @@
   publish = "."
   command = ""
 
-# Send the legacy briefing URL to the new Request Access page with a real
-# 301 (the in-page meta refresh in briefing.html stays as a fallback).
+# ---------------------------------------------------------------------------
+# Legacy URLs → the Projects · Programs · Intelligence architecture.
+# 301s come first; the extensionless rewrites at the bottom must not shadow
+# them, since Netlify applies the first matching rule.
+# ---------------------------------------------------------------------------
+
+# Intelligence absorbed Strategic Asset Intelligence and Decision Rooms.
 [[redirects]]
-  from = "/briefing.html"
-  to = "/request-access.html"
+  from = "/strategic-asset-intelligence"
+  to = "/intelligence"
   status = 301
   force = true
 
-# Renamed pages — preserve old URLs that may be linked or indexed.
+[[redirects]]
+  from = "/strategic-asset-intelligence.html"
+  to = "/intelligence"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/decision-rooms"
+  to = "/intelligence"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/decision-rooms.html"
+  to = "/intelligence"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/situation-room.html"
-  to = "/decision-rooms.html"
+  to = "/intelligence"
   status = 301
   force = true
 
 [[redirects]]
   from = "/intelligence-feed.html"
-  to = "/strategic-asset-intelligence.html"
+  to = "/intelligence"
   status = 301
   force = true
+
+# Critical Minerals is a sector, not a page. Land on the Kafwego card.
+[[redirects]]
+  from = "/critical-minerals"
+  to = "/projects#critical-minerals"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/critical-minerals.html"
+  to = "/projects#critical-minerals"
+  status = 301
+  force = true
+
+# The enquiry route is now Work With Us.
+[[redirects]]
+  from = "/request-access"
+  to = "/work-with-us"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/request-access.html"
+  to = "/work-with-us"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/briefing.html"
+  to = "/work-with-us"
+  status = 301
+  force = true
+
+# ---------------------------------------------------------------------------
+# Canonical extensionless routes. Netlify serves these from the .html files by
+# default; declaring them as 200 rewrites makes the behaviour explicit rather
+# than relying on the platform default.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/projects"
+  to = "/projects.html"
+  status = 200
+
+[[redirects]]
+  from = "/programs"
+  to = "/programs.html"
+  status = 200
+
+[[redirects]]
+  from = "/intelligence"
+  to = "/intelligence.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/work-with-us"
+  to = "/work-with-us.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
 
 # Security / caching headers
 [[headers]]

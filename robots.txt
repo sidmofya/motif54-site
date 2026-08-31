@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://motif54.com/sitemap.xml
