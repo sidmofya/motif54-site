@@ -73,7 +73,7 @@ body {
   color: var(--bg);
   padding: 10px 16px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   z-index: 100;
 }
 .skip-link:focus { left: 8px; top: 8px; }
@@ -134,7 +134,7 @@ hr {
 
 .brand {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.08em;
 }
 
@@ -142,7 +142,7 @@ hr {
 .section { margin-top: 72px; }
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
@@ -162,7 +162,7 @@ hr {
   padding-bottom: 20px;
   border-bottom: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   flex-wrap: wrap;
 }
@@ -222,7 +222,7 @@ hr {
 .btn {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -293,7 +293,7 @@ hr {
 
 .spec-title {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -342,7 +342,7 @@ li::marker { color: var(--accent-2); }
 /* ── Inline link style for body / arrows ── */
 .link-mono {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.04em;
   color: var(--fg);
   text-decoration: none;
@@ -389,7 +389,7 @@ li::marker { color: var(--accent-2); }
 }
 .scorecard-num {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--accent);
 }
@@ -528,7 +528,7 @@ li::marker { color: var(--accent-2); }
 }
 .legal .legal-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-muted);
@@ -546,14 +546,14 @@ li::marker { color: var(--accent-2); }
   margin-left: auto;
   margin-right: auto;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.04em;
   color: var(--fg-dim);
 }
 .site-footer .foot-mark { display: block; margin-bottom: 16px; }
 .site-footer .foot-brand {
   color: var(--fg);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.12em;
   margin-bottom: 8px;
@@ -587,7 +587,7 @@ li::marker { color: var(--accent-2); }
 }
 .bf-section-label {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg-dim);
@@ -660,7 +660,7 @@ li::marker { color: var(--accent-2); }
 .bf-actions { margin-top: 8px; }
 .bf-btn {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   background: var(--fg);
@@ -674,7 +674,7 @@ li::marker { color: var(--accent-2); }
 .bf-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 .bf-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.bf-error-msg { font-size: 13px; color: var(--err); margin: 6px 0 0; }
+.bf-error-msg { font-size: 14px; color: var(--err); margin: 6px 0 0; }
 
 .bf-success {
   background: var(--bg-2);
@@ -778,7 +778,7 @@ select:focus-visible {
 
 .nav-cta {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -842,7 +842,7 @@ select:focus-visible {
 /* Mono label inside a card — sector, audience, category */
 .card-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
@@ -852,7 +852,7 @@ select:focus-visible {
 /* Sequence number inside a card */
 .card-num {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--accent);
   margin-bottom: 16px;
@@ -881,7 +881,7 @@ select:focus-visible {
 /* ── Featured inset (Gate Diagnostic) ── */
 .filter-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-dim);
@@ -956,7 +956,7 @@ select:focus-visible {
 
 .page-meta {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-dim);
@@ -971,15 +971,16 @@ select:focus-visible {
   padding-top: 20px;
   border-top: 1px solid var(--line);
   color: var(--fg-dim);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.04em;
 }
 
 /* ============================================================
    RESPONSIVE — additions only
    ============================================================ */
-@media (max-width: 700px) {
-  /* Brand and toggle on one line; the menu wraps beneath it */
+@media (max-width: 900px) {
+  /* Below this width the five-item nav no longer fits on one line, so it
+     collapses to a disclosure. 900px is the breakpoint the grids already use. */
   .site-nav {
     flex-direction: row;
     align-items: center;

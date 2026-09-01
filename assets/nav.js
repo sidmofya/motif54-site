@@ -33,7 +33,7 @@
     /* Reset state when the viewport grows past the mobile breakpoint,
        so the desktop menu is never left in a stale hidden state. */
     if (window.matchMedia) {
-      var mq = window.matchMedia('(min-width: 701px)');
+      var mq = window.matchMedia('(min-width: 901px)');
       var reset = function (e) { if (e.matches) setOpen(false); };
       if (mq.addEventListener) {
         mq.addEventListener('change', reset);

@@ -67,6 +67,13 @@ Conventions worth knowing before editing:
   blueprint grid — that combination is the brand.
 - Body copy is `--fg-muted`; only headings, `.lead`, `.filter` and `strong`
   go bright.
+- Two type scales run in parallel: display/body in Space Grotesk (17.5px base,
+  `.lead` at 18–22px) and UI chrome in JetBrains Mono (12–14px — nav, buttons,
+  eyebrows, card labels, footer). Keep the gap between them; scaling one
+  without the other flattens the design.
+- The nav collapses to a disclosure below 900px. The five-item horizontal nav
+  needs ~704px and stops fitting before that, so don't lower the breakpoint
+  without re-measuring (`.nav-toggle` / `#nav-menu`, plus `assets/nav.js`).
 
 ## Adding a project or a program
 
