@@ -27,14 +27,16 @@
   /* ?interest= maps a page CTA onto an engagement type. Values here
      must match the option values in the select. */
   var INTEREST_MAP = {
+    'screening': 'Screening',
+    'assessment': 'Assessment',
     'project': 'Project',
     'kafwego': 'Project',
     'coppercloud': 'Project',
-    'program': 'Partner Room',
-    'partner-room': 'Partner Room',
-    'capital-readiness': 'Capital Readiness',
-    'gate-diagnostic': 'Gate Diagnostic',
-    'intelligence': 'Other Intelligence',
+    /* Retired routes. Kept so inbound links from before the two-door
+       rewrite still land on a live engagement type. */
+    'gate-diagnostic': 'Assessment',
+    'capital-readiness': 'Assessment',
+    'intelligence': 'Assessment',
     'other': 'Other'
   };
 

@@ -6,45 +6,76 @@
   command = ""
 
 # ---------------------------------------------------------------------------
-# Legacy URLs → the Projects · Programs · Intelligence architecture.
+# Legacy URLs → the Screen · Assess architecture.
 # 301s come first; the extensionless rewrites at the bottom must not shadow
 # them, since Netlify applies the first matching rule.
+#
+# Netlify does not chain redirects, so every retired path points straight at
+# its final destination rather than at another retired path.
 # ---------------------------------------------------------------------------
 
-# Intelligence absorbed Strategic Asset Intelligence and Decision Rooms.
+# Assess absorbed Intelligence, and with it Strategic Asset Intelligence,
+# Decision Rooms, and the Gate Diagnostic.
 [[redirects]]
   from = "/strategic-asset-intelligence"
-  to = "/intelligence"
+  to = "/assess"
   status = 301
   force = true
 
 [[redirects]]
   from = "/strategic-asset-intelligence.html"
-  to = "/intelligence"
+  to = "/assess"
   status = 301
   force = true
 
 [[redirects]]
   from = "/decision-rooms"
-  to = "/intelligence"
+  to = "/assess"
   status = 301
   force = true
 
 [[redirects]]
   from = "/decision-rooms.html"
-  to = "/intelligence"
+  to = "/assess"
   status = 301
   force = true
 
 [[redirects]]
   from = "/situation-room.html"
-  to = "/intelligence"
+  to = "/assess"
   status = 301
   force = true
 
 [[redirects]]
   from = "/intelligence-feed.html"
-  to = "/intelligence"
+  to = "/assess"
+  status = 301
+  force = true
+
+# Programs retired: Partner Room is sold personally under Sid Mofya, and
+# Capital Readiness folded into the assessment offer.
+[[redirects]]
+  from = "/programs"
+  to = "/assess"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/programs.html"
+  to = "/assess"
+  status = 301
+  force = true
+
+# Intelligence retired as a pillar; its content redistributed into the two doors.
+[[redirects]]
+  from = "/intelligence"
+  to = "/assess"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/intelligence.html"
+  to = "/assess"
   status = 301
   force = true
 
@@ -98,16 +129,6 @@
 [[redirects]]
   from = "/projects"
   to = "/projects.html"
-  status = 200
-
-[[redirects]]
-  from = "/programs"
-  to = "/programs.html"
-  status = 200
-
-[[redirects]]
-  from = "/intelligence"
-  to = "/intelligence.html"
   status = 200
 
 [[redirects]]

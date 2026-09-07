@@ -26,17 +26,19 @@ declares those rewrites explicitly rather than relying on the platform default.
 
 | URL | File | Notes |
 | --- | --- | --- |
-| `/` | `index.html` | Hero, three modes, projects, programs, intelligence, sectors, thesis, leadership, closing CTA |
+| `/` | `index.html` | Hero, two doors, the read, projects as evidence, sectors, leadership, closing CTA |
+| `/screen` | `screen.html` | The screening retainer; `.card--placeholder` marks the unfilled decline-pile cards |
+| `/assess` | `assess.html` | The commissioned assessment; absorbed the Gate Diagnostic and Capital Readiness |
 | `/projects` | `projects.html` | `#critical-minerals` and `#ai-infrastructure` anchor the two project cards |
-| `/programs` | `programs.html` | |
-| `/intelligence` | `intelligence.html` | Three lenses + Gate Diagnostic |
 | `/about` | `about.html` | |
 | `/work-with-us` | `work-with-us.html` | Enquiry form; accepts `?interest=` |
 | `/privacy` | `privacy.html` | Footer-linked only, not in primary nav |
 | `/terms` | `terms.html` | Footer-linked only, not in primary nav |
 
-Redirects for retired URLs live in `netlify.toml`:
-`/strategic-asset-intelligence` and `/decision-rooms` → `/intelligence`,
+Redirects for retired URLs live in `netlify.toml`. Netlify does not chain
+redirects, so each rule points straight at its final destination:
+`/programs`, `/intelligence`, `/strategic-asset-intelligence`, `/decision-rooms`,
+`/situation-room.html` and `/intelligence-feed.html` → `/assess`,
 `/critical-minerals` → `/projects#critical-minerals`,
 `/request-access` and `/briefing.html` → `/work-with-us`.
 
@@ -77,14 +79,14 @@ Conventions worth knowing before editing:
 
 ## Adding a project or a program
 
-Project and program cards use one shared markup shape, and the grid
+Project, door, and CTA cards use one shared markup shape, and the grid
 (`.card-grid`) derives its column count from the number of cards — two cards
 render as two columns, three as three, with no CSS change. To add a third
 project, copy an existing `<article class="card">` block and edit it in **both**
 places it appears:
 
-- `index.html` — the "Selected projects" / "Programs" grid (featured entries)
-- `projects.html` or `programs.html` — the full listing
+- `index.html` — the "Evidence" grid (featured entries)
+- `projects.html` — the full listing
 
 ```html
 <article class="card" id="anchor-slug">
@@ -112,9 +114,10 @@ collects (role, geography, sector, timeframe, decision makers, referral,
 additional context) are simply left blank.
 
 `?interest=` preselects the engagement type. Accepted values are mapped in
-`INTEREST_MAP` in `assets/form.js`: `project`, `kafwego`, `coppercloud`,
-`program`, `partner-room`, `capital-readiness`, `gate-diagnostic`,
-`intelligence`, `other`.
+`INTEREST_MAP` in `assets/form.js`: `screening`, `assessment`, `project`,
+`kafwego`, `coppercloud`, `other`. The retired keys `gate-diagnostic`,
+`capital-readiness` and `intelligence` are kept pointing at `Assessment` so
+inbound links from before the two-door rewrite still land on a live type.
 
 Because the POST uses `mode: 'no-cors'`, the response is opaque and the form
 always shows the success state. There is no readable failure path.
