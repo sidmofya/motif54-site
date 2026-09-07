@@ -86,6 +86,16 @@
 # than relying on the platform default.
 # ---------------------------------------------------------------------------
 [[redirects]]
+  from = "/screen"
+  to = "/screen.html"
+  status = 200
+
+[[redirects]]
+  from = "/assess"
+  to = "/assess.html"
+  status = 200
+
+[[redirects]]
   from = "/projects"
   to = "/projects.html"
   status = 200

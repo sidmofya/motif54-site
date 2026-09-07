@@ -1028,3 +1028,15 @@ select:focus-visible {
   .foot-links { gap: 12px 20px; }
   .foot-links a { display: inline-block; padding: 6px 0; }
 }
+
+/* Decline-pile placeholders on /screen. Dashed edge and muted ground so an
+   unfilled card is unmistakable. Remove the class from a card once its real
+   content is in. */
+.card--placeholder {
+  border: 1px dashed var(--fg-dim);
+  background: none;
+}
+.card--placeholder:hover { border-color: var(--fg-dim); background: none; }
+.card--placeholder h3,
+.card--placeholder p { color: var(--fg-dim); }
+.card--placeholder .card-label { color: var(--fg-dim); }
