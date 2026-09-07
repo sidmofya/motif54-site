@@ -1040,3 +1040,10 @@ select:focus-visible {
 .card--placeholder h3,
 .card--placeholder p { color: var(--fg-dim); }
 .card--placeholder .card-label { color: var(--fg-dim); }
+
+/* Homepage hero only. Without this the line breaks after "actually",
+   orphaning "true." on its own row at the 48px desktop cap. Balancing
+   evens the two lines instead of hard-coding a max-width, so it holds if
+   the copy or the display font changes. Browsers without support wrap as
+   before. */
+.hero-title--balanced { text-wrap: balance; }
