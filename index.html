@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#161518" />
   <title>MOTIF 54 | Screening &amp; Assessment for African Assets</title>
   <meta name="description" content="MOTIF 54 reads African assets, capital structures, and decision environments for the people who have to commit. Monthly deal screening and commissioned written assessments." />
   <link rel="canonical" href="https://motif54.com/" />
@@ -62,8 +63,21 @@
 
     <!-- HERO -->
     <section class="hero">
+      <img class="depth depth-map" src="/assets/img/africa.svg" alt="" aria-hidden="true" width="694" height="728" />
+      <img class="depth depth-mark" src="/assets/img/m54-ring.svg" alt="" aria-hidden="true" width="200" height="200" />
+      <div class="orb" aria-hidden="true">
+        <div class="orb-tilt">
+          <svg class="orb-static" viewBox="0 0 200 200" fill="none" focusable="false"><circle cx="100" cy="100" r="84" stroke="#F4F4F2" stroke-opacity=".55" stroke-width=".6"/><rect x="98.9" y="12.8" width="2.2" height="6.4" fill="#D08A5A"/></svg>
+          <canvas class="orb-canvas"></canvas>
+        </div>
+        <div class="orb-card">
+          <div class="orb-card-id">M54 &middot; Read</div>
+          <div class="orb-card-sector">AI Infrastructure</div>
+          <div class="orb-card-status"><span class="orb-card-dot"></span>Reading</div>
+        </div>
+      </div>
       <div class="eyebrow">MOTIF 54</div>
-      <h1 class="hero-title--balanced">The map and the terrain disagree.</h1>
+      <h1 class="hero-title--balanced">The map and the terrain <br /><span class="hero-dim">disagree.</span></h1>
       <p class="lead">
         MOTIF 54 reads African assets, capital structures, and decision environments for
         the people who have to commit.
@@ -149,7 +163,8 @@
     <hr/>
 
     <!-- SECTOR FOCUS -->
-    <section>
+    <section class="has-depth">
+      <img class="depth depth-map depth-map--sectors" src="/assets/img/africa.svg" alt="" aria-hidden="true" width="694" height="728" />
       <div class="eyebrow">Where we work</div>
       <h2>Strategic sectors where physical and digital capacity meet.</h2>
       <div class="row-grid cols-3">
@@ -258,6 +273,7 @@
   <script src="/assets/vendor/DrawSVGPlugin-3.15.0.min.js" defer></script>
   <script src="/assets/vendor/lenis-1.3.26.min.js" defer></script>
   <script src="/assets/motion.js" defer></script>
+  <script src="/assets/orb.js" defer></script>
 
 </body>
 </html>
