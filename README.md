@@ -131,7 +131,8 @@ CopperCloud link.
 ## Motion libraries
 
 `assets/vendor/` holds pinned, minified copies, version in the filename
-because `/assets/*` is served `immutable`:
+because `/assets/vendor/*` is served `immutable` (cached for a year, never
+re-checked):
 
 - GSAP 3.15.0 with ScrollTrigger, SplitText, ScrambleTextPlugin and
   DrawSVGPlugin (GSAP's no-charge standard licence; all plugins are free).
@@ -142,6 +143,17 @@ To upgrade, copy the new `dist/*.min.js` files in under new versioned names,
 strip the `sourceMappingURL` comment, and update the `<script>` tags on the
 six pages that load them. Remove the Lenis `<script>` tag on every page to
 drop smooth scrolling; nothing else depends on it.
+
+## Caching
+
+Only `assets/vendor/` is immutable, and its files must keep a version in the
+filename. Everything else under `/assets/` (`style.css`, `motion.js`,
+`orb.js`, images) gets Netlify's default `max-age=0, must-revalidate`: the
+browser keeps a copy but checks its ETag on each load, so a deploy shows up
+immediately. Until October 2026 all of `/assets/*` was immutable, which left
+returning visitors on stale CSS after a deploy. The `?v=20261009` query on
+the first-party CSS and JS tags broke those old cached copies once. It does
+not need bumping for future changes; bumping it is harmless.
 
 ## The enquiry form
 

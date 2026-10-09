@@ -159,7 +159,12 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Only vendor files are cached forever: their filenames carry the library
+# version, so a new version is a new URL. Everything else under /assets/
+# keeps a stable name (style.css, motion.js, ...) and must revalidate, or
+# returning browsers pair new HTML with last month's CSS. Netlify's default
+# (max-age=0, must-revalidate, with ETags) handles that.
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/vendor/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
