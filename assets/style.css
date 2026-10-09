@@ -725,6 +725,14 @@ li::marker { color: var(--accent-2); }
   transform-origin: left;
 }
 
+/* Hero line masks. The h1's tight line-height leaves descenders (g, y)
+   outside each line's box, where the mask would clip them. Padding makes
+   room; the matching negative margin keeps the layout unchanged. */
+.hero-line-mask {
+  padding-bottom: .15em;
+  margin-bottom: -.15em;
+}
+
 /* Copper spotlight that follows the pointer inside a card. motion.js sets
    --mx / --my; the layer sits under the card's content. */
 @media (hover: hover) and (pointer: fine) {
@@ -1098,9 +1106,8 @@ select:focus-visible {
 .card--placeholder p { color: var(--fg-dim); }
 .card--placeholder .card-label { color: var(--fg-dim); }
 
-/* Homepage hero only. Without this the line breaks after "actually",
-   orphaning "true." on its own row at the 48px desktop cap. Balancing
-   evens the two lines instead of hard-coding a max-width, so it holds if
-   the copy or the display font changes. Browsers without support wrap as
-   before. */
+/* Homepage hero only. When the headline wraps, balancing evens the lines
+   so the last word never sits alone on its own row. It does this without
+   a hard-coded max-width, so it holds if the copy or the display font
+   changes. Browsers without support wrap as before. */
 .hero-title--balanced { text-wrap: balance; }

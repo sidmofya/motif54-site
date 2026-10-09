@@ -61,6 +61,7 @@
       SplitText.create(title, {
         type: 'lines',
         mask: 'lines',
+        linesClass: 'hero-line',
         autoSplit: true,
         onSplit: function (self) {
           return gsap.from(self.lines, { yPercent: 100, duration: 0.9, ease: 'power3.out', stagger: 0.08 });
