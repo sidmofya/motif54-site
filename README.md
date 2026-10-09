@@ -64,9 +64,17 @@ Conventions worth knowing before editing:
 - **Never type `//` in an eyebrow.** `.eyebrow::before` supplies it.
 - Copper is structure, red is emphasis. Don't swap them.
 - Sections are separated by `<hr/>` (64px rhythm), not by a wrapper class.
-- Zero shadows, zero keyframes. The only transition is `200ms ease` on
-  `color`, `border-color` and `background`. The body carries a fixed 64px
-  blueprint grid — that combination is the brand.
+- Zero shadows, zero CSS keyframes. CSS transitions are `200ms ease` on
+  `color`, `border-color`, `background`, plus the link-arrow nudge and the
+  card spotlight. The body carries a fixed 64px blueprint grid — that
+  combination is the brand.
+- Scroll and load motion lives in `assets/motion.js` and stays quiet: the
+  hero headline rises line by line, eyebrows decode once on entry, section
+  rules and row rules draw left to right, cards rise 16px, the nav mark's
+  ring draws on the homepage, and Lenis lightly smooths wheel scrolling.
+  All of it is off under `prefers-reduced-motion: reduce`. Start states are
+  set from JS only, so the page is complete with JS off or a library
+  blocked. `/privacy` and `/terms` don't load it.
 - Body copy is `--fg-muted`; only headings, `.lead`, `.filter` and `strong`
   go bright.
 - Two type scales run in parallel: display/body in Space Grotesk (17.5px base,
@@ -101,6 +109,21 @@ For an external destination, add `target="_blank" rel="noopener"` and the
 `<span class="visually-hidden"> (opens in a new tab)</span>` suffix used by the
 CopperCloud link.
 
+## Motion libraries
+
+`assets/vendor/` holds pinned, minified copies, version in the filename
+because `/assets/*` is served `immutable`:
+
+- GSAP 3.15.0 with ScrollTrigger, SplitText, ScrambleTextPlugin and
+  DrawSVGPlugin (GSAP's no-charge standard licence; all plugins are free).
+- Lenis 1.3.26. Its stylesheet rules are folded into the end of the
+  `MOTION` block in `assets/style.css`.
+
+To upgrade, copy the new `dist/*.min.js` files in under new versioned names,
+strip the `sourceMappingURL` comment, and update the `<script>` tags on the
+six pages that load them. Remove the Lenis `<script>` tag on every page to
+drop smooth scrolling; nothing else depends on it.
+
 ## The enquiry form
 
 `work-with-us.html` posts to a Google Apps Script web app (endpoint in
@@ -126,8 +149,10 @@ always shows the success state. There is no readable failure path.
 
 The site sets **no cookies** and runs **no analytics**. The only third-party
 requests are Google Fonts on every page and the Apps Script endpoint on form
-submit. `/privacy` says exactly that — if analytics or any tracking technology
-is ever added, update that page in the same change.
+submit. GSAP and Lenis are self-hosted in `assets/vendor/` for the same
+reason; keep them there rather than switching to a CDN. `motion.js` stores
+nothing on the device. `/privacy` says exactly that — if analytics or any
+tracking technology is ever added, update that page in the same change.
 
 ## Local preview
 
