@@ -79,7 +79,8 @@ Conventions worth knowing before editing:
 - The nav is sticky glass: translucent `--bg` with a 6px backdrop blur.
   `html { scroll-padding-top }` keeps anchors clear of it.
 - The orb (`assets/orb.js`, homepage only) is the one luminous element: the
-  M54 ring as a particle field, lit from lower left, copper at the notch. It
+  M54 ring as a particle field, lit from lower left, copper at the notch,
+  with copper grains shimmering through the white. It
   tilts toward the pointer, particles near the pointer brighten and part,
   and a small card cycles the three sectors. It redraws at 30fps and stops
   when offscreen. With reduced motion it draws one still frame. With JS off

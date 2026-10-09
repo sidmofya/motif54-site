@@ -1,9 +1,11 @@
 /* MOTIF 54 — the ring orb (homepage hero).
    The M54 logo's ring drawn as a luminous particle field: particles drift
-   around the ring, brightest on the arc facing a light at upper right, with
-   a copper tint at the 12 o'clock notch. The light sits lower left, the
-   side of the ring that stays on screen when the orb is cropped. The orb tilts toward the pointer
-   and particles near it brighten and part. Rendering pauses offscreen.
+   around the ring, brightest on the arc facing a light at lower left (the
+   side that stays on screen when the orb is cropped), with a copper tint at
+   the 12 o'clock notch. About 30% of the grains are copper and glint as
+   they pass through the light, so copper shimmers through the white. The
+   orb tilts toward the pointer and particles near it brighten and part.
+   Rendering pauses offscreen.
    Without GSAP, or with JS off, the static SVG ring stays in place. With
    reduced motion the canvas draws one still frame. */
 (function () {
@@ -30,6 +32,20 @@
   var seed = 54;
   var rand = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
   var gauss = function () { return (rand() + rand() + rand() - 1.5) / 1.5; };
+  /* A second stream picks the copper grains, so the field's layout is the
+     same as before copper was added. */
+  var seedC = 5454;
+  var randC = function () { seedC = (seedC * 16807) % 2147483647; return (seedC - 1) / 2147483646; };
+  var COPPER_SHARE = 0.3;
+
+  /* Copper grain colour: brand copper at rest, lifting toward a pale
+     highlight at the top of each glint. */
+  var copperRGBA = function (glint, alpha) {
+    var r = Math.round(208 + 32 * glint);
+    var g = Math.round(138 + 46 * glint);
+    var b = Math.round(90 + 50 * glint);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha.toFixed(3) + ')';
+  };
 
   var ring = [];
   for (var i = 0; i < 900; i++) {
@@ -40,12 +56,13 @@
       b: 0.55 + rand() * 0.45,
       ph: rand() * TAU,
       f: 0.6 + rand() * 1.6,
-      push: 0, glow: 0
+      push: 0, glow: 0,
+      c: randC() < COPPER_SHARE
     });
   }
   var dust = [];
   for (var j = 0; j < 260; j++) {
-    dust.push({ a: rand() * TAU, r: Math.sqrt(rand()) * 0.96, s: 0.5 + rand() * 0.7, b: 0.08 + rand() * 0.18, ph: rand() * TAU });
+    dust.push({ a: rand() * TAU, r: Math.sqrt(rand()) * 0.96, s: 0.5 + rand() * 0.7, b: 0.08 + rand() * 0.18, ph: rand() * TAU, c: randC() < COPPER_SHARE });
   }
 
   var size = 0, dpr = 1, cx = 0, cy = 0, R = 0;
@@ -106,8 +123,14 @@
       var qa = q.a + spin * 0.4;
       var qx = cx + Math.cos(qa) * q.r * R;
       var qy = cy + Math.sin(qa) * q.r * R;
-      var qb = q.b * (0.6 + 0.4 * lit(qa)) * (0.8 + 0.2 * Math.sin(t * 0.8 + q.ph));
-      ctx.fillStyle = 'rgba(244,240,232,' + qb.toFixed(3) + ')';
+      if (q.c) {
+        var qs = Math.sin(t * 1.4 + q.ph);
+        var qcb = q.b * 1.6 * (0.6 + 0.4 * lit(qa)) * (0.75 + 0.4 * qs);
+        ctx.fillStyle = copperRGBA(Math.pow(Math.max(0, qs), 3), Math.max(0, qcb));
+      } else {
+        var qb = q.b * (0.6 + 0.4 * lit(qa)) * (0.8 + 0.2 * Math.sin(t * 0.8 + q.ph));
+        ctx.fillStyle = 'rgba(244,240,232,' + qb.toFixed(3) + ')';
+      }
       ctx.fillRect(qx, qy, q.s, q.s);
     }
 
@@ -128,13 +151,20 @@
         py += (dy / dist) * p.push;
       }
 
-      var tw = 0.75 + 0.25 * Math.sin(t * p.f + p.ph);
-      var alpha = Math.min(1, p.b * lit(a) * tw + p.glow * 0.7);
-      var copper = nearNotch(a);
-      var red = Math.round(244 - copper * 36);
-      var green = Math.round(240 - copper * 102);
-      var blue = Math.round(232 - copper * 142);
-      ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha.toFixed(3) + ')';
+      if (p.c) {
+        /* Copper grains twinkle faster and deeper, so they glint. */
+        var sh = Math.sin(t * p.f * 1.8 + p.ph);
+        var calpha = Math.min(1, Math.max(0, p.b * lit(a) * (0.75 + 0.4 * sh) + p.glow * 0.7));
+        ctx.fillStyle = copperRGBA(Math.pow(Math.max(0, sh), 3), calpha);
+      } else {
+        var tw = 0.75 + 0.25 * Math.sin(t * p.f + p.ph);
+        var alpha = Math.min(1, p.b * lit(a) * tw + p.glow * 0.7);
+        var copper = nearNotch(a);
+        var red = Math.round(244 - copper * 36);
+        var green = Math.round(240 - copper * 102);
+        var blue = Math.round(232 - copper * 142);
+        ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha.toFixed(3) + ')';
+      }
       var sz = p.s * (1 + p.glow * 0.8);
       ctx.fillRect(px - sz / 2, py - sz / 2, sz, sz);
     }
