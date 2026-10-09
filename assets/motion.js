@@ -57,7 +57,7 @@
     }
     if (title) {
       var heroRest = document.querySelectorAll('.hero .lead, .hero .cta-row');
-      gsap.set(heroRest, { autoAlpha: 0, y: 12 });
+      gsap.set(heroRest, { autoAlpha: 0, y: 12, filter: 'blur(4px)' });
       SplitText.create(title, {
         type: 'lines',
         mask: 'lines',
@@ -67,7 +67,7 @@
           return gsap.from(self.lines, { yPercent: 100, duration: 0.9, ease: 'power3.out', stagger: 0.08 });
         }
       });
-      gsap.to(heroRest, { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08, delay: 0.45 });
+      gsap.to(heroRest, { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out', stagger: 0.08, delay: 0.45, clearProps: 'filter' });
     }
 
     /* Eyebrows decode into place as they enter. Screen readers get a
@@ -110,24 +110,50 @@
       });
     });
 
-    /* Cards rise 16px into place, staggered per batch. The card a URL hash
-       points at is left still: the browser scrolls to it after this runs,
-       and an offset start would land it 16px off its scroll-margin. */
+    /* Rack focus: cards and section headings resolve from a slight blur
+       as they enter, staggered per batch. The card a URL hash points at is
+       left still: the browser scrolls to it after this runs, and an offset
+       start would land it off its scroll-margin. */
     var target = null;
     try { target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
-    var cards = gsap.utils.toArray('.site-main .card, .site-main .spec').filter(function (card) {
-      return !(target && card.contains(target));
+    var focusables = gsap.utils.toArray('.site-main .card, .site-main .spec, .site-main h2').filter(function (el) {
+      return !(target && el.contains(target));
     });
-    if (cards.length) {
-      gsap.set(cards, { autoAlpha: 0, y: 16 });
-      ScrollTrigger.batch(cards, {
+    if (focusables.length) {
+      gsap.set(focusables, { autoAlpha: 0, y: 12, filter: 'blur(6px)' });
+      ScrollTrigger.batch(focusables, {
         start: 'top 92%',
         once: true,
         onEnter: function (batch) {
-          gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08, overwrite: true });
+          gsap.to(batch, {
+            autoAlpha: 1, y: 0, filter: 'blur(0px)',
+            duration: 0.8, ease: 'power2.out', stagger: 0.08, overwrite: true, clearProps: 'filter'
+          });
         }
       });
     }
+
+    /* Parallax between planes. Each layer lags the page by its factor, so
+       the farther it sits (map, then the blurred mark, then the orb) the
+       slower it seems to move. clamp() starts layers in the first screen
+       at scroll 0, so nothing jumps on load. */
+    var planes = [
+      ['.depth-map', 0.15],
+      ['.depth-mark', 0.08],
+      ['.orb', 0.05]
+    ];
+    planes.forEach(function (plane) {
+      gsap.utils.toArray(plane[0]).forEach(function (el) {
+        var setY = gsap.quickSetter(el, 'y', 'px');
+        ScrollTrigger.create({
+          trigger: el.parentNode,
+          start: 'clamp(top bottom)',
+          end: 'clamp(bottom top)',
+          onUpdate: function (self) { setY((self.scroll() - self.start) * plane[1]); }
+        });
+        cleanups.push(function () { gsap.set(el, { clearProps: 'transform' }); });
+      });
+    });
 
     return function () {
       for (var j = cleanups.length - 1; j >= 0; j--) cleanups[j]();

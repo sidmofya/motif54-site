@@ -6,17 +6,18 @@
    ============================================================ */
 
 :root {
-  /* surfaces — near-black, a hair warm */
-  --bg:        #0A0A0C;   /* canvas        */
-  --bg-1:      #0E0E12;   /* cards/panels  */
-  --bg-2:      #15151B;   /* raised / hover */
+  /* surfaces — warm charcoal, never pure black */
+  --bg:        #161518;   /* canvas        */
+  --bg-1:      #1B1A1E;   /* cards/panels  */
+  --bg-2:      #222126;   /* raised / hover */
+  --bg-edge:   #0E0D10;   /* vignette falloff at the viewport edges */
   --line:      rgba(255,255,255,.08);
   --line-2:    rgba(255,255,255,.14);
 
   /* text ramp */
   --fg:        #F4F4F2;   /* headings      */
   --fg-muted:  #A2A0A6;   /* body copy     */
-  --fg-dim:    #817F88;   /* meta / caption — AA on --bg */
+  --fg-dim:    #8C8A93;   /* meta / caption — AA on --bg, --bg-1, --bg-2 */
 
   /* accents — balanced copper + red */
   --accent:        #D08A5A;   /* COPPER — eyebrows, brand, section markers, hairline hover */
@@ -49,12 +50,6 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background-color: var(--bg);
-  /* ultra-faint blueprint grid — precision cue, no glows */
-  background-image:
-    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-attachment: fixed;
   color: var(--fg-muted);
   font-family: var(--font-display);
   font-size: 17.5px;
@@ -283,7 +278,7 @@ hr {
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   padding: 32px;
-  background: linear-gradient(160deg, #0E0E12, #0A0A0C);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg));
   transition: border-color 200ms ease, background-color 200ms ease;
 }
 .spec:hover {
@@ -308,7 +303,7 @@ hr {
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   padding: 40px;
-  background: linear-gradient(160deg, #0E0E12, #0A0A0C);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg));
   display: flex;
   flex-direction: column;
   transition: border-color 200ms ease, background-color 200ms ease;
@@ -365,7 +360,7 @@ li::marker { color: var(--accent-2); }
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   padding: 24px;
-  background: linear-gradient(160deg, #0E0E12, #0A0A0C);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg));
   transition: border-color 200ms ease, background-color 200ms ease;
 }
 .audience:hover { border-color: var(--accent); background: var(--bg-2); }
@@ -409,7 +404,7 @@ li::marker { color: var(--accent-2); }
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   padding: 32px;
-  background: linear-gradient(160deg, #0E0E12, #0A0A0C);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg));
   display: flex;
   flex-direction: column;
   transition: border-color 200ms ease, background-color 200ms ease;
@@ -579,7 +574,7 @@ li::marker { color: var(--accent-2); }
 .bf-wrap { max-width: 680px; }
 
 .bf-section {
-  background: linear-gradient(160deg, #0E0E12, #0A0A0C);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg));
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   padding: 40px 48px;
@@ -816,10 +811,6 @@ html.lenis body { height: auto; }
   border: 0;
 }
 
-/* Header / main padding — replaces the old inline styles */
-.site-header { padding-bottom: 0; }
-.site-main   { padding-top: 0; }
-
 /* ── Visible focus states ── */
 a:focus-visible,
 button:focus-visible,
@@ -893,7 +884,7 @@ select:focus-visible {
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   padding: 36px;
-  background: linear-gradient(160deg, #0E0E12, #0A0A0C);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg));
   display: flex;
   flex-direction: column;
   scroll-margin-top: 32px;
@@ -976,7 +967,7 @@ select:focus-visible {
   font-family: var(--font-display);
   border: 1px solid var(--line);
   border-radius: var(--r-card);
-  background: linear-gradient(160deg, #0E0E12, #0A0A0C);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg));
   padding: 28px;
   color: var(--fg-muted);
   cursor: pointer;
@@ -1111,3 +1102,176 @@ select:focus-visible {
    a hard-coded max-width, so it holds if the copy or the display font
    changes. Browsers without support wrap as before. */
 .hero-title--balanced { text-wrap: balance; }
+
+/* ============================================================
+   DEPTH — charcoal canvas, planes at different focus
+   Far: the ghosted Africa map and the blurred M54 ring (index).
+   Mid: the blueprint grid, fading out toward the edges.
+   Near: sharp content. A vignette darkens the viewport edges.
+   Depth comes from blur and falloff; nothing casts a shadow.
+   ============================================================ */
+
+/* Blueprint grid, masked so it reads as a focal plane, not wallpaper. */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;   /* own layer: scrolling never repaints it */
+}
+body::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 30%, transparent 100%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 30%, transparent 100%);
+}
+body::after {
+  background: radial-gradient(ellipse 85% 75% at 50% 40%, transparent 45%, var(--bg-edge) 100%);
+}
+
+/* Ghosted, out-of-focus layers. Positioned inside their section; motion.js
+   adds parallax so the farther a layer sits, the more it lags the page. */
+.has-depth { position: relative; }
+.depth {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+.depth {
+  will-change: transform;
+}
+/* The blur is baked into the SVGs (feGaussianBlur), so it is rasterised
+   once rather than re-filtered every frame as the layers move. */
+.depth-map {
+  width: 680px;
+  opacity: .045;
+}
+.depth-mark {
+  width: 500px;
+  opacity: .05;
+}
+.hero .depth-map  { top: -80px; left: 38%; }
+.hero .depth-mark { top: 180px; left: -220px; }
+.depth-map--sectors { top: -120px; right: -160px; width: 520px; opacity: .05; }
+
+/* Hero eyebrow carries a copper mark in place of the // prefix. */
+.hero .eyebrow::before { content: '+\00a0\00a0'; font-weight: 700; }
+
+/* Two-tone headline: the turn of the sentence drops back to grey. */
+.hero-dim { color: var(--fg-muted); }
+
+/* ============================================================
+   GLASS NAV — sticky, translucent; content blurs as it passes under
+   ============================================================ */
+html { scroll-padding-top: 80px; }   /* anchors land clear of the sticky nav */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  max-width: none;
+  padding: 16px 32px;
+  background: rgba(22,21,24,.84);
+  -webkit-backdrop-filter: blur(6px) saturate(1.1);
+          backdrop-filter: blur(6px) saturate(1.1);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .site-nav {
+  max-width: calc(var(--container) - 64px);
+  margin: 0 auto;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.site-main { padding-top: 64px; }
+
+/* <main> spans the viewport so it can crop the hero orb and the ghosted
+   layers at the screen edge. Its padding keeps the content column at the
+   same width as .page. overflow-x: clip does not create a scroll container,
+   so sticky and anchors behave as before. */
+.site-main {
+  max-width: none;
+  padding-left: max(32px, calc((100% - var(--container)) / 2 + 32px));
+  padding-right: max(32px, calc((100% - var(--container)) / 2 + 32px));
+  overflow-x: clip;
+}
+.site-header:has(.nav-menu[data-open="true"]) { background: var(--bg); }
+
+@media (max-width: 600px) {
+  .site-header { padding: 12px 20px; }
+  .site-main { padding: 48px 20px 96px; }
+}
+
+/* ============================================================
+   ORB — the M54 ring as a luminous particle field (index hero)
+   assets/orb.js draws the canvas; without JS the static ring shows.
+   ============================================================ */
+.hero { position: relative; }
+/* Homepage only: the text keeps a 600px column clear of the orb. */
+.hero:has(> .orb) > :not(.orb):not(.depth) { max-width: 600px; position: relative; }
+
+.orb {
+  position: absolute;
+  top: -60px;
+  right: -240px;
+  width: 560px;
+  height: 560px;
+  perspective: 900px;
+  pointer-events: none;
+}
+.orb-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.orb-canvas,
+.orb-static {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.orb-canvas { display: none; }
+.orb.is-live .orb-canvas { display: block; }
+.orb.is-live .orb-static { display: none; }
+
+.orb-card {
+  position: absolute;
+  left: 40px;
+  bottom: 24px;
+  min-width: 190px;
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  background: rgba(27,26,30,.94);   /* solid, not glass: the orb redraws beneath it */
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-card);
+}
+.orb-card-id { color: var(--fg); font-weight: 700; margin-bottom: 4px; }
+.orb-card-status { margin-top: 4px; display: flex; align-items: center; gap: 8px; }
+.orb-card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .orb {
+    top: -40px;
+    right: -150px;
+    width: 360px;
+    height: 360px;
+    opacity: .5;
+  }
+  .orb-card { display: none; }
+  .hero .depth-map { left: 20%; width: 440px; }
+  .depth-map--sectors { display: none; }
+}

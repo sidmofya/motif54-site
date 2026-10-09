@@ -49,9 +49,10 @@ stack — reuse the tokens.
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--bg` / `--bg-1` / `--bg-2` | `#0A0A0C` / `#0E0E12` / `#15151B` | canvas / cards / raised-hover |
+| `--bg` / `--bg-1` / `--bg-2` | `#161518` / `#1B1A1E` / `#222126` | warm charcoal canvas / cards / raised-hover |
+| `--bg-edge` | `#0E0D10` | vignette falloff at the viewport edges |
 | `--line` / `--line-2` | `rgba(255,255,255,.08)` / `.14` | hairline borders |
-| `--fg` / `--fg-muted` / `--fg-dim` | `#F4F4F2` / `#A2A0A6` / `#817F88` | headings / body / meta |
+| `--fg` / `--fg-muted` / `--fg-dim` | `#F4F4F2` / `#A2A0A6` / `#8C8A93` | headings / body / meta (all AA on every surface) |
 | `--accent` | `#D08A5A` | copper — eyebrows, numbers, hover, focus |
 | `--accent-2` | `#E36A60` | red — links, bullets, errors |
 | `--font-display` | Space Grotesk | headings and body |
@@ -61,17 +62,34 @@ stack — reuse the tokens.
 
 Conventions worth knowing before editing:
 
-- **Never type `//` in an eyebrow.** `.eyebrow::before` supplies it.
+- **Never type `//` in an eyebrow.** `.eyebrow::before` supplies it (a copper
+  `+` in page heroes).
 - Copper is structure, red is emphasis. Don't swap them.
 - Sections are separated by `<hr/>` (64px rhythm), not by a wrapper class.
 - Zero shadows, zero CSS keyframes. CSS transitions are `200ms ease` on
   `color`, `border-color`, `background`, plus the link-arrow nudge and the
-  card spotlight. The body carries a fixed 64px blueprint grid — that
-  combination is the brand.
+  card spotlight.
+- Depth comes from blur and falloff, never shadows. The canvas is charcoal,
+  not black, with a fixed vignette (`body::after`) and the 64px blueprint
+  grid (`body::before`) masked so it fades toward the edges. On the homepage
+  a ghosted Africa (`assets/img/africa.svg`) and an out-of-focus M54 ring
+  (`assets/img/m54-ring.svg`) sit behind the content. Their blur is baked
+  into the SVGs, so it is rasterised once. `<main>` spans the viewport and
+  clips horizontally so these layers crop at the screen edge.
+- The nav is sticky glass: translucent `--bg` with a 6px backdrop blur.
+  `html { scroll-padding-top }` keeps anchors clear of it.
+- The orb (`assets/orb.js`, homepage only) is the one luminous element: the
+  M54 ring as a particle field, lit from lower left, copper at the notch. It
+  tilts toward the pointer, particles near the pointer brighten and part,
+  and a small card cycles the three sectors. It redraws at 30fps and stops
+  when offscreen. With reduced motion it draws one still frame. With JS off
+  a thin static ring shows.
 - Scroll and load motion lives in `assets/motion.js` and stays quiet: the
   hero headline rises line by line, eyebrows decode once on entry, section
-  rules and row rules draw left to right, cards rise 16px, the nav mark's
-  ring draws on the homepage, and Lenis lightly smooths wheel scrolling.
+  rules and row rules draw left to right, cards and section headings come
+  into focus from a 6px blur, the nav mark's ring draws on the homepage, the
+  ghosted layers and orb lag the scroll for parallax (farther lags more), and
+  Lenis lightly smooths wheel scrolling.
   All of it is off under `prefers-reduced-motion: reduce`. Start states are
   set from JS only, so the page is complete with JS off or a library
   blocked. `/privacy` and `/terms` don't load it.
