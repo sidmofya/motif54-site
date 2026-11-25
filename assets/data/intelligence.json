@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "note": "Public evidence record for MOTIF 54 research entries. Pages do not fetch this file; tests check the static pages against it. Update it only after an editorial check of both the conclusion and its qualification. Unknown dates stay null.",
+  "entries": [
+    {
+      "id": "what-ai-is-made-of",
+      "title": "What AI Is Made Of",
+      "author": "Sid Mofya",
+      "topics": ["AI infrastructure", "Power and cooling"],
+      "format": "Interactive 3D model with a list view and a published research trail",
+      "question": "What must exist before a gigawatt of AI computation can operate?",
+      "description": "An interactive reference model of a hypothetical one-gigawatt AI data centre: power and cooling systems, equipment and the assumptions behind the material estimates.",
+      "interpretation": [
+        "An infrastructure thesis should identify which demand measure it uses and what supporting capacity it assumes.",
+        "A material-demand estimate needs explicit equipment boundaries and sensitivity checks.",
+        "Define the evidence still needed before relying on a modeled total."
+      ],
+      "application_questions": ["Which dependency could change your investment case?"],
+      "experience_url": "https://ai.sidmofya.com/",
+      "evidence_url": "https://ai.sidmofya.com/research.html",
+      "related_urls": [
+        "https://ai.sidmofya.com/#do=apart&metal=copper",
+        "https://ai.sidmofya.com/#do=follow",
+        "https://ai.sidmofya.com/research-docs/build--run04--coverage-json.html",
+        "https://ai.sidmofya.com/research-docs/research--run04--model_notes-md"
+      ],
+      "scope_note": "A hypothetical plant with one gigawatt of commissioned IT electrical capacity. Run 04 material figures are estimates for partial equipment scope; low, base and high are design cases, not probabilities or confidence intervals. Not an operating facility, construction design or procurement schedule.",
+      "numbers_published_on_motif": false,
+      "source_revision": "massbal_intelligence@cf78bafc8a0c36076ad79b50ebd22a007c554c8b (deployed 2026-11-16)",
+      "source_review_date": null,
+      "motif_editorial_review_date": null,
+      "brief_url": "https://motif54.com/intelligence/what-ai-is-made-of",
+      "advisory_anchor": "/advisory#invest",
+      "inquiry": { "interest": "invest", "research": "what-ai-is-made-of" },
+      "thumbnail": {
+        "path": "/assets/img/intel-ai-anatomy.svg",
+        "rights": "Original MOTIF 54 conceptual illustration; no research still reused (D02 not yet confirmed).",
+        "alt": "Line drawing of a transmission tower feeding a transformer and a building of computer racks, with cooling units on the roof releasing heat."
+      }
+    },
+    {
+      "id": "from-copper-to-compute",
+      "title": "From Copper to Compute",
+      "author": "Sid Mofya",
+      "topics": ["Minerals", "Industrial processes"],
+      "format": "Five-scene illustrated journey with a source register",
+      "question": "Where in the copper value chain does your opportunity actually sit?",
+      "description": "A five-scene journey from ore to a representative component in a hypothetical AI data centre, using Zambian mining and processing examples.",
+      "interpretation": [
+        "An investment thesis should specify the product, customer and capabilities it concerns.",
+        "Identify which inputs drive sensitivity instead of treating a single estimate as a forecast.",
+        "Partnerships, power, logistics, financing and customer qualification still need investigation."
+      ],
+      "application_questions": ["What does this mean for your position in the copper value chain?"],
+      "experience_url": "https://ai.sidmofya.com/copper/",
+      "evidence_url": "https://ai.sidmofya.com/copper/sources.json",
+      "related_urls": [
+        "https://ai.sidmofya.com/copper/#install",
+        "https://ai.sidmofya.com/research.html"
+      ],
+      "scope_note": "Representative examples and a conditional quantity example. Not a procurement order, shipment timetable or verified whole-campus inventory. Throughput comparisons are not lead times. It does not trace a shipment or establish a supplier relationship.",
+      "numbers_published_on_motif": false,
+      "source_revision": "massbal_intelligence@cf78bafc8a0c36076ad79b50ebd22a007c554c8b (deployed 2026-11-16)",
+      "source_review_date": "2026-11-16",
+      "source_review_basis": "The exhibit footer states: Public evidence reviewed 16 November 2026.",
+      "motif_editorial_review_date": null,
+      "brief_url": "https://motif54.com/intelligence/from-copper-to-compute",
+      "advisory_anchor": "/advisory#position",
+      "inquiry": { "interest": "position", "research": "from-copper-to-compute" },
+      "thumbnail": {
+        "path": "/assets/img/intel-copper.svg",
+        "rights": "Original MOTIF 54 conceptual illustration; no research still reused (D02 not yet confirmed).",
+        "alt": "Line drawing of copper changing form along a line: rock, concentrate, anode, cathode, a busbar and a computer rack."
+      }
+    }
+  ]
+}

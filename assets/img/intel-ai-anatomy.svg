@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" width="560" height="360" role="img" aria-labelledby="t">
+  <title id="t">Illustration: power reaching a data centre and heat leaving it</title>
+  <rect width="560" height="360" fill="#1B1A1E"/>
+  <g stroke="#FFFFFF" stroke-opacity=".04" stroke-width="1">
+    <path d="M0 40H560M0 80H560M0 120H560M0 160H560M0 200H560M0 240H560M0 280H560M0 320H560"/>
+    <path d="M40 0V360M80 0V360M120 0V360M160 0V360M200 0V360M240 0V360M280 0V360M320 0V360M360 0V360M400 0V360M440 0V360M480 0V360M520 0V360"/>
+  </g>
+  <path d="M24 300H536" stroke="#8C8A93" stroke-width="1.5"/>
+  <!-- pylon -->
+  <g fill="none" stroke="#A2A0A6" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M56 300L74 110L92 300"/>
+    <path d="M62 236H86M66 190H82M69 150H79"/>
+    <path d="M62 236L82 190M86 236L66 190M66 190L79 150M82 190L69 150"/>
+    <path d="M48 124H100M54 146H94"/>
+  </g>
+  <!-- transformer -->
+  <g fill="#222126" stroke="#A2A0A6" stroke-width="1.6">
+    <rect x="128" y="236" width="56" height="64" rx="2"/>
+    <path d="M136 244V292M144 244V292M152 244V292M160 244V292M168 244V292M176 244V292" stroke-opacity=".5"/>
+    <rect x="140" y="222" width="8" height="14"/>
+    <rect x="164" y="222" width="8" height="14"/>
+  </g>
+  <!-- building with racks -->
+  <g>
+    <rect x="216" y="168" width="232" height="132" fill="#222126" stroke="#A2A0A6" stroke-width="1.6"/>
+    <g fill="#161518" stroke="#8C8A93" stroke-width="1.2">
+      <rect x="236" y="196" width="28" height="92"/>
+      <rect x="276" y="196" width="28" height="92"/>
+      <rect x="316" y="196" width="28" height="92"/>
+      <rect x="356" y="196" width="28" height="92"/>
+      <rect x="396" y="196" width="28" height="92"/>
+    </g>
+    <g stroke="#8C8A93" stroke-opacity=".7" stroke-width="1">
+      <path d="M240 208H260M240 218H260M240 228H260M240 238H260M240 248H260M240 258H260M240 268H260M240 278H260"/>
+      <path d="M280 208H300M280 218H300M280 228H300M280 238H300M280 248H300M280 258H300M280 268H300M280 278H300"/>
+      <path d="M320 208H340M320 218H340M320 228H340M320 238H340M320 248H340M320 258H340M320 268H340M320 278H340"/>
+      <path d="M360 208H380M360 218H380M360 228H380M360 238H380M360 248H380M360 258H380M360 268H380M360 278H380"/>
+      <path d="M400 208H420M400 218H420M400 228H420M400 238H420M400 248H420M400 258H420M400 268H420M400 278H420"/>
+    </g>
+  </g>
+  <!-- cooling units on the roof -->
+  <g fill="#222126" stroke="#A2A0A6" stroke-width="1.6">
+    <rect x="252" y="136" width="56" height="32"/>
+    <rect x="356" y="136" width="56" height="32"/>
+    <circle cx="280" cy="152" r="11"/>
+    <circle cx="384" cy="152" r="11"/>
+  </g>
+  <g stroke="#A2A0A6" stroke-width="1.2"><path d="M273 145L287 159M287 145L273 159M377 145L391 159M391 145L377 159"/></g>
+  <!-- power path (copper) -->
+  <path d="M74 118C110 150 120 190 156 222" fill="none" stroke="#D08A5A" stroke-width="2.4"/>
+  <path d="M184 262H236" fill="none" stroke="#D08A5A" stroke-width="2.4"/>
+  <circle cx="156" cy="222" r="3" fill="#D08A5A"/>
+  <!-- heat path (red) -->
+  <path d="M324 196V176M370 196V176" stroke="#E36A60" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M272 126C278 110 268 98 276 84M300 126C306 110 296 98 304 84M376 126C382 110 372 98 380 84M404 126C410 110 400 98 408 84" fill="none" stroke="#E36A60" stroke-width="1.8" stroke-opacity=".8"/>
+</svg>
