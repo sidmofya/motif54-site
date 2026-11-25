@@ -1,0 +1,53 @@
+PASS  /  200 canonical https://motif54.com/
+PASS  /index.html  200 canonical https://motif54.com/
+PASS  /screen  200 canonical https://motif54.com/screen
+PASS  /screen.html  200 canonical https://motif54.com/screen
+PASS  /assess  200 canonical https://motif54.com/assess
+PASS  /assess.html  200 canonical https://motif54.com/assess
+PASS  /projects  200 canonical https://motif54.com/projects
+PASS  /projects.html  200 canonical https://motif54.com/projects
+PASS  /about  200 canonical https://motif54.com/about
+PASS  /about.html  200 canonical https://motif54.com/about
+PASS  /work-with-us  200 canonical https://motif54.com/work-with-us
+PASS  /work-with-us.html  200 canonical https://motif54.com/work-with-us
+PASS  /privacy  200 canonical https://motif54.com/privacy
+PASS  /privacy.html  200 canonical https://motif54.com/privacy
+PASS  /terms  200 canonical https://motif54.com/terms
+PASS  /terms.html  200 canonical https://motif54.com/terms
+PASS  /intelligence  200 canonical https://motif54.com/intelligence
+PASS  /intelligence.html  200 canonical https://motif54.com/intelligence
+PASS  /intelligence/what-ai-is-made-of  200 canonical https://motif54.com/intelligence/what-ai-is-made-of
+PASS  /intelligence/from-copper-to-compute  200 canonical https://motif54.com/intelligence/from-copper-to-compute
+PASS  /advisory  200 canonical https://motif54.com/advisory
+PASS  /approach  200 canonical https://motif54.com/approach
+PASS  /strategic-asset-intelligence  301 -> /assess
+PASS  /strategic-asset-intelligence.html  301 -> /assess
+PASS  /decision-rooms  301 -> /assess
+PASS  /decision-rooms.html  301 -> /assess
+PASS  /situation-room.html  301 -> /assess
+PASS  /intelligence-feed.html  301 -> /assess
+PASS  /programs  301 -> /assess
+PASS  /programs.html  301 -> /assess
+PASS  /critical-minerals  301 -> /projects#critical-minerals
+PASS  /critical-minerals.html  301 -> /projects#critical-minerals
+PASS  /request-access  301 -> /work-with-us
+PASS  /request-access.html  301 -> /work-with-us
+PASS  /briefing.html  301 -> /work-with-us
+PASS  /README.md  404
+PASS  /apps-script.gs  404
+PASS  /nope-xyz  404
+PASS  /intelligence/  200  text/html; charset=utf-8
+PASS  /advisory/  200  text/html; charset=utf-8
+PASS  /request-access?interest=kafwego  301 /work-with-us?interest=kafwego 
+PASS  /tests/package.json  404  text/html; charset=utf-8
+PASS  /netlify/functions/inquiry.mjs  404  text/html; charset=utf-8
+PASS  /docs/baseline/route-manifest.json  404  text/html; charset=utf-8
+PASS  /assets/inquiry-schema.mjs  200  application/javascript; charset=utf-8
+PASS  /assets/data/intelligence.json  200  application/json; charset=utf-8
+PASS  function GET  405 POST no-store
+PASS  function form-encoded  415
+PASS  function invalid  400 {"ok":false,"code":"invalid_input","field_errors":{"name":"required","email":"required","evaluating":"required"}}
+PASS  function without upstream config  503 {"ok":false,"code":"service_unavailable"} no-store
+PASS  function oversize  413
+
+51 passed, 0 failed

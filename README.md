@@ -1,198 +1,305 @@
 # motif54.com
 
-Static marketing site for MOTIF 54. Hand-written HTML, one shared stylesheet,
-two small vanilla-JS files. No framework, no build step, no dependencies — the
-repository root **is** the published site.
+Static site for MOTIF 54: hand-written HTML, one shared stylesheet, a few
+vanilla-JS files and one Netlify function for the inquiry form. There is no
+framework and no build step; the repository root is the published site.
 
 Legal operating entity: **CXB Ventures LLC dba MOTIF 54** (a California LLC).
-The public brand is MOTIF 54; the legal name is used only where the operating
-entity has to be identified (footer, `/privacy`, `/terms`).
+The public brand is MOTIF 54; the legal name appears only where the operating
+entity must be identified (footer, `/privacy`, `/terms`).
 
 ## Positioning
 
-MOTIF 54 builds strategic African projects and the capability around them.
+MOTIF 54 is an advisory for the new industrial era. It helps investors and
+industrial leaders make consequential decisions across intelligence, energy,
+minerals and capital.
 
-The site is organised around three modes — **Projects · Programs ·
-Intelligence** — across three sectors: **AI Infrastructure · Energy · Critical
-Minerals**. MOTIF 54 is not presented as a consultancy, fund, training company,
-think tank, broker, venture studio, or conference organiser. The operating
-model is shown through the work rather than named as a category.
+The site leads with intelligence: selected public research on the physical
+systems behind AI. Each research entry connects to a decision a buyer could
+commission. Advisory is organised as **Invest · Position · Develop**, with
+screening and commissioned assessment kept as practical entry points. AI is
+part of the research method; people stay accountable for the advice. The
+African vantage point is a source of context and access, not the firm's
+category.
+
+Do not present MOTIF 54 as an AI-adoption agency, software vendor, fund,
+placement agent or subscription research platform. Project interests
+(CopperCloud, Kafwego) are principal participation, never client case
+studies.
 
 ## Routes
 
-Pages are `.html` files at the repository root, linked internally without the
-extension. Netlify serves `/projects` from `projects.html`; `netlify.toml`
-declares those rewrites explicitly rather than relying on the platform default.
+Pages are `.html` files, linked without the extension. `netlify.toml` declares
+explicit 200 rewrites for every extensionless page.
 
 | URL | File | Notes |
 | --- | --- | --- |
-| `/` | `index.html` | Hero, two doors, the read, projects as evidence, sectors, leadership, closing CTA |
-| `/screen` | `screen.html` | The screening retainer; `.card--placeholder` marks the unfilled decline-pile cards |
-| `/assess` | `assess.html` | The commissioned assessment; absorbed the Gate Diagnostic and Capital Readiness |
-| `/projects` | `projects.html` | `#critical-minerals` and `#ai-infrastructure` anchor the two project cards |
-| `/about` | `about.html` | |
-| `/work-with-us` | `work-with-us.html` | Enquiry form; accepts `?interest=` |
-| `/privacy` | `privacy.html` | Footer-linked only, not in primary nav |
-| `/terms` | `terms.html` | Footer-linked only, not in primary nav |
+| `/` | `index.html` | Hero and dependency map, featured intelligence, Invest/Position/Develop, approach, practice evidence, closing. Keeps the legacy anchors `#two-doors`, `#screen`, `#assess`, `#ai-infrastructure`, `#critical-minerals` |
+| `/intelligence` | `intelligence.html` | The research index: question, format, author, scope and source dates |
+| `/intelligence/what-ai-is-made-of` | `intelligence/what-ai-is-made-of.html` | Decision brief for the model at ai.sidmofya.com |
+| `/intelligence/from-copper-to-compute` | `intelligence/from-copper-to-compute.html` | Decision brief for the copper journey |
+| `/advisory` | `advisory.html` | `#invest`, `#position`, `#develop`, the Industrial Bottleneck Review, ways to work, process |
+| `/approach` | `approach.html` | Evidence, assumptions, AI use, human accountability, corrections, confidential material |
+| `/about` | `about.html` | Founder, vantage point, participation disclosure |
+| `/projects` | `projects.html` | `#ai-infrastructure` and `#critical-minerals` anchor the project cards |
+| `/screen`, `/assess` | `screen.html`, `assess.html` | Existing services, framed under Advisory |
+| `/work-with-us` | `work-with-us.html` | The inquiry form ("Start a conversation"); accepts `?interest=`, `?research=`, `?source=` |
+| `/privacy`, `/terms` | `privacy.html`, `terms.html` | Footer only |
+| anything else | `404.html` | Served by Netlify with a real 404 status |
 
-Redirects for retired URLs live in `netlify.toml`. Netlify does not chain
-redirects, so each rule points straight at its final destination:
-`/programs`, `/intelligence`, `/strategic-asset-intelligence`, `/decision-rooms`,
-`/situation-room.html` and `/intelligence-feed.html` → `/assess`,
-`/critical-minerals` → `/projects#critical-minerals`,
-`/request-access` and `/briefing.html` → `/work-with-us`.
+Primary navigation on every page: **Intelligence · Advisory · About · Start a
+conversation**. The header and footer are identical on every page except for
+`aria-current`; `tests/unit/pages.test.mjs` enforces that, so edit all pages
+together.
+
+Retired URLs redirect in `netlify.toml`, each straight to its final
+destination (Netlify does not chain redirects): `/programs`,
+`/strategic-asset-intelligence`, `/decision-rooms`, `/situation-room.html` and
+`/intelligence-feed.html` go to `/assess`; `/critical-minerals` goes to
+`/projects#critical-minerals`; `/request-access` and `/briefing.html` go to
+`/work-with-us`, keeping the query string. `/intelligence` redirected to
+`/assess` until November 2026 and now serves the intelligence index again.
+`docs/baseline/route-manifest.json` records every route before and after that
+change and drives the route tests.
+
+### Publish guard
+
+Because the repository root is the publish directory, every committed file
+would be served. Force-404 rules at the top of `netlify.toml` hide repository
+material: `/netlify/*` (function source), `/tests/*`, `/docs/*`, `/README.md`,
+`/apps-script.gs` and `/.gitignore`. A `.gitignore` entry does not keep a
+committed file off the site; add a guard for any new repository-only folder.
+Never put screenshots with personal data, private research extracts or
+secrets in this repository.
+
+## Research boundaries
+
+The research belongs to Sid Mofya and lives at https://ai.sidmofya.com
+(repository `sidmofya/massbal_intelligence`, `anatomy/`). MOTIF owns the
+commercial explanation and the inquiry; the research site owns its
+interactions, model versions and evidence. MOTIF pages link to the research
+in the same tab and never embed it.
+
+- Credit every entry "Research by Sid Mofya".
+- MOTIF pages publish **no research quantities**. Read numbers at the source,
+  with their assumptions. `tests/unit/content.test.mjs` rejects quantities
+  with units on the intelligence pages.
+- Label MOTIF's reading as "MOTIF interpretation", never as a validated
+  recommendation. Keep each brief's limitations panel.
+- Link only to published public evidence on ai.sidmofya.com, never to the
+  private repository.
+- Do not republish an upstream change automatically. Re-check both the
+  conclusion and its qualification first.
+
+### Adding a research entry
+
+1. Add a record to `assets/data/intelligence.json` with every field the
+   existing records carry. Leave unknown dates `null`; never use today's date
+   as a research date.
+2. Add the research id to `RESEARCH_IDS` in `assets/inquiry-schema.mjs`.
+3. Write `intelligence/<id>.html` from an existing brief: deck, opening,
+   figure with a text equivalent, three observations with interpretations,
+   limitations, Explore links, and an inquiry CTA to
+   `/work-with-us?interest=<invest|position|develop>&research=<id>&source=research-brief`.
+4. Add an entry to `intelligence.html` and, if featured, `index.html`.
+5. Add a 200 rewrite to `netlify.toml` and the URL to `sitemap.xml`.
+6. Run the tests. No change to the research application is needed.
+
+An unpublished title may appear as "In development" with no link and no
+findings. Do not list proposed titles as if they exist.
 
 ## Design system
 
 Defined once in `assets/style.css`. Do not introduce a second palette or type
-stack — reuse the tokens.
+stack; reuse the tokens.
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--bg` / `--bg-1` / `--bg-2` | `#161518` / `#1B1A1E` / `#222126` | warm charcoal canvas / cards / raised-hover |
-| `--bg-edge` | `#0E0D10` | vignette falloff at the viewport edges |
+| `--bg` / `--bg-1` / `--bg-2` | `#161518` / `#1B1A1E` / `#222126` | warm charcoal canvas / cards / raised |
 | `--line` / `--line-2` | `rgba(255,255,255,.08)` / `.14` | hairline borders |
-| `--fg` / `--fg-muted` / `--fg-dim` | `#F4F4F2` / `#A2A0A6` / `#8C8A93` | headings / body / meta (all AA on every surface) |
-| `--accent` | `#D08A5A` | copper — eyebrows, numbers, hover, focus |
-| `--accent-2` | `#E36A60` | red — links, bullets, errors |
+| `--fg` / `--fg-muted` / `--fg-dim` | `#F4F4F2` / `#A2A0A6` / `#8C8A93` | headings / body / meta |
+| `--accent` | `#D08A5A` | copper: eyebrows, numbers, structure, focus |
+| `--accent-2` | `#E36A60` | red: link underlines, emphasis, errors |
 | `--font-display` | Space Grotesk | headings and body |
-| `--font-mono` | JetBrains Mono | eyebrows, buttons, nav, footer |
+| `--font-mono` | JetBrains Mono | eyebrows, buttons, nav, labels, footer |
 | `--container` | `1100px` | page width |
-| `--r-btn` / `--r-card` | `3px` / `5px` | the site is near-sharp-cornered |
 
-Conventions worth knowing before editing:
+Contrast is checked by axe in the e2e suite (WCAG 2.2 AA tags), not asserted
+here.
 
-- **Never type `//` in an eyebrow.** `.eyebrow::before` supplies it (a copper
-  `+` in page heroes).
-- Copper is structure, red is emphasis. Don't swap them.
-- Sections are separated by `<hr/>` (64px rhythm), not by a wrapper class.
-- Zero shadows, zero CSS keyframes. CSS transitions are `200ms ease` on
-  `color`, `border-color`, `background`, plus the link-arrow nudge and the
-  card spotlight.
-- Depth comes from blur and falloff, never shadows. The canvas is charcoal,
-  not black, with a fixed vignette (`body::after`) and the 64px blueprint
-  grid (`body::before`) masked so it fades toward the edges. On the homepage
-  a ghosted Africa (`assets/img/africa.svg`) and an out-of-focus M54 ring
-  (`assets/img/m54-ring.svg`) sit behind the content. Their blur is baked
-  into the SVGs, so it is rasterised once. `<main>` spans the viewport and
-  clips horizontally so these layers crop at the screen edge.
-- The nav is sticky glass: translucent `--bg` with a 6px backdrop blur.
-  `html { scroll-padding-top }` keeps anchors clear of it.
-- The orb (`assets/orb.js`, homepage only) is the one luminous element: the
-  M54 ring as a particle field, lit from lower left, copper at the notch,
-  with copper grains shimmering through the white. It
-  tilts toward the pointer, particles near the pointer brighten and part,
-  and a small card cycles the three sectors. It redraws at 30fps and stops
-  when offscreen. With reduced motion it draws one still frame. With JS off
-  a thin static ring shows.
-- Scroll and load motion lives in `assets/motion.js` and stays quiet: the
-  hero headline rises line by line, eyebrows decode once on entry, section
-  rules and row rules draw left to right, cards and section headings come
-  into focus from a 6px blur, the nav mark's ring draws on the homepage, the
-  ghosted layers and orb lag the scroll for parallax (farther lags more), and
-  Lenis lightly smooths wheel scrolling.
-  All of it is off under `prefers-reduced-motion: reduce`. Start states are
-  set from JS only, so the page is complete with JS off or a library
-  blocked. `/privacy` and `/terms` don't load it.
-- Body copy is `--fg-muted`; only headings, `.lead`, `.filter` and `strong`
-  go bright.
-- Two type scales run in parallel: display/body in Space Grotesk (17.5px base,
-  `.lead` at 18–22px) and UI chrome in JetBrains Mono (12–14px — nav, buttons,
-  eyebrows, card labels, footer). Keep the gap between them; scaling one
-  without the other flattens the design.
-- The nav collapses to a disclosure below 900px. The five-item horizontal nav
-  needs ~704px and stops fitting before that, so don't lower the breakpoint
-  without re-measuring (`.nav-toggle` / `#nav-menu`, plus `assets/nav.js`).
+Conventions:
 
-## Adding a project or a program
+- Never type `//` in an eyebrow; `.eyebrow::before` supplies it.
+- Copper is structure, red is emphasis.
+- Sections are separated by `<hr/>`.
+- Prose is capped near 68 characters per line. Body text is 17.5px on
+  desktop and 17px on phones.
+- Research entries are editorial rows (`.feature`), not a card grid.
+  Diagrams are built from lists (`.system-map`, `.sequence`) so they read as
+  text, reflow on phones and need no image.
+- Illustrations are original line drawings labelled "Illustration, not to
+  scale". Do not use stock or generated imagery as evidence of real assets.
+- Links to ai.sidmofya.com open in the same tab. Other external links that
+  open a new tab carry `rel="noopener"` and a visually hidden "(opens in a
+  new tab)".
+- The nav collapses to a disclosure below 900px (`assets/nav.js`).
 
-Project, door, and CTA cards use one shared markup shape, and the grid
-(`.card-grid`) derives its column count from the number of cards — two cards
-render as two columns, three as three, with no CSS change. To add a third
-project, copy an existing `<article class="card">` block and edit it in **both**
-places it appears:
+### Motion
 
-- `index.html` — the "Evidence" grid (featured entries)
-- `projects.html` — the full listing
+`assets/motion.js` adds quiet, optional motion with self-hosted GSAP 3.15.0
+(ScrollTrigger, ScrambleText, DrawSVG): eyebrows decode once, rules draw,
+cards and headings come into focus, ghosted layers lag the scroll, and the
+nav mark draws on the homepage. All of it sits behind
+`prefers-reduced-motion: no-preference`, and start states are set from JS
+only, so the page is complete without it. Scrolling is the browser's own and
+the hero text is never hidden waiting for an animation.
 
-```html
-<article class="card" id="anchor-slug">
-  <div class="card-label">Sector or audience</div>
-  <h3>Name</h3>
-  <p>One short paragraph.</p>
-  <div class="card-cta"><a class="link-mono" href="/…">Call to action &rarr;</a></div>
-</article>
+`assets/vendor/` holds pinned, versioned copies and is served `immutable`.
+To upgrade, add new versioned files and update the `<script>` tags; never
+replace a file in place. SplitText and Lenis remain in the folder but no page
+loads them. The homepage orb (`orb.js`) was removed in November 2026.
+
+## The inquiry form
+
+```
+browser (assets/form.js)
+  -> POST /.netlify/functions/inquiry   (same origin, JSON)
+     netlify/functions/inquiry.mjs validates, then
+  -> POST <INQUIRY_UPSTREAM_URL>        (form-encoded, allowlisted fields)
+     Google Apps Script appends a sheet row and emails sid@motif54.com
+  <- "OK"
 ```
 
-For an external destination, add `target="_blank" rel="noopener"` and the
-`<span class="visually-hidden"> (opens in a new tab)</span>` suffix used by the
-CopperCloud link.
+The page shows "received" only when the adapter returns HTTP 200 with
+`ok: true` and the request id the page generated, and the adapter returns that
+only when Apps Script answers `OK` (directly or after its usual redirect to
+`script.googleusercontent.com/macros/echo`). An HTML login page, an unexpected
+body, any other redirect, a timeout (15 s) or an error is never shown as
+received, and the visitor's text stays in the form with an email alternative.
 
-## Motion libraries
+`assets/inquiry-schema.mjs` holds the field rules, value lists and mappings.
+Both the browser and the function import it, so they cannot disagree.
 
-`assets/vendor/` holds pinned, minified copies, version in the filename
-because `/assets/vendor/*` is served `immutable` (cached for a year, never
-re-checked):
+### Configuration
 
-- GSAP 3.15.0 with ScrollTrigger, SplitText, ScrambleTextPlugin and
-  DrawSVGPlugin (GSAP's no-charge standard licence; all plugins are free).
-- Lenis 1.3.26. Its stylesheet rules are folded into the end of the
-  `MOTION` block in `assets/style.css`.
+Set **`INQUIRY_UPSTREAM_URL`** in Netlify (Site configuration, Environment
+variables) with the **Functions** scope, to the Apps Script web app URL
+(`https://script.google.com/macros/s/<deployment id>/exec`). Values in
+`netlify.toml` do not reach functions. Without a valid value the function
+answers 503 and the page offers email. The browser never supplies a
+destination.
 
-To upgrade, copy the new `dist/*.min.js` files in under new versioned names,
-strip the `sourceMappingURL` comment, and update the `<script>` tags on the
-six pages that load them. Remove the Lenis `<script>` tag on every page to
-drop smooth scrolling; nothing else depends on it.
+### Contract
 
-## Caching
+| Status | Body | Meaning |
+| --- | --- | --- |
+| 200 | `ok: true, request_id` | Apps Script answered `OK` |
+| 400 | `ok: false, code: invalid_input, field_errors` | Fix the named fields (a filled honeypot gets the same generic answer) |
+| 405 / 413 / 415 | `method_not_allowed` / `payload_too_large` / `unsupported_type` | POST only, 16 KB maximum, JSON only |
+| 502 | `delivery_unconfirmed, request_id` | Upstream failed or answered unexpectedly |
+| 504 | `delivery_unconfirmed, request_id` | The wait expired; receipt is uncertain, not disproven |
+| 503 | `service_unavailable` | `INQUIRY_UPSTREAM_URL` missing or invalid |
 
-Only `assets/vendor/` is immutable, and its files must keep a version in the
-filename. Everything else under `/assets/` (`style.css`, `motion.js`,
-`orb.js`, images) gets Netlify's default `max-age=0, must-revalidate`: the
-browser keeps a copy but checks its ETag on each load, so a deploy shows up
-immediately. Until October 2026 all of `/assets/*` was immutable, which left
-returning visitors on stale CSS after a deploy. The `?v=20261009` query on
-the first-party CSS and JS tags broke those old cached copies once. It does
-not need bumping for future changes; bumping it is harmless.
+Every response carries `Cache-Control: no-store`. Values are never echoed;
+logs hold a request id and a result code only. There is no rate limit in this
+release: the honeypot, validation and size limit are the abuse controls. The
+browser handles a 429 if one is added later. Nothing is retried
+automatically, and the Apps Script writes the row before it sends email, so a
+timeout can follow a stored row: do not promise exactly-once delivery.
 
-## The enquiry form
+### Fields
 
-`work-with-us.html` posts to a Google Apps Script web app (endpoint in
-`assets/form.js`). `apps-script.gs` is the receiving code — paste it into the
-Apps Script editor; it is not deployed from this repository.
+| Form field | Key sent to Apps Script | Rule |
+| --- | --- | --- |
+| Name | `name` | required, at most 120 characters |
+| Organization | `organization` | optional, at most 200 |
+| Work email | `email` | required, practical check, at most 254; personal domains accepted |
+| What are you trying to understand or achieve? | `evaluating` | required, 20 to 4,000 characters |
+| What kind of decision? | `request_type` plus `decision=` in context | optional: Invest, Position, Develop -> `Assessment`; Screening -> `Screening`; Project inquiry -> `Project`; Not sure or none -> `Other` |
+| When do you need to decide? | `timeframe` | optional |
+| Relevant public link | `linkedin` (legacy name) | optional http(s), at most 2,048; never fetched |
+| How did you find us? | `referral` | optional |
+| (from the URL) | `additional_context` | `schema=1; decision=…; interest=…; project=…; research=…; source=…; request_id=…` |
 
-Field names are deliberately unchanged from the previous form so the Google
-Sheet column order still lines up: `request_type`, `name`, `organization`,
-`email`, `evaluating`, `linkedin`. The columns the current form no longer
-collects (role, geography, sector, timeframe, decision makers, referral,
-additional context) are simply left blank.
+The six original keys keep their sheet columns. `timeframe`, `referral` and
+`additional_context` exist in `apps-script.gs` but the old form never sent
+them; confirm the deployed script matches before relying on them. Strings
+that start with `= + - @` or a tab gain a leading apostrophe so Sheets stores
+them as text.
 
-`?interest=` preselects the engagement type. Accepted values are mapped in
-`INTEREST_MAP` in `assets/form.js`: `screening`, `assessment`, `project`,
-`kafwego`, `coppercloud`, `other`. The retired keys `gate-diagnostic`,
-`capital-readiness` and `intelligence` are kept pointing at `Assessment` so
-inbound links from before the two-door rewrite still land on a live type.
+`?interest=` accepts `invest`, `position`, `develop`, and the legacy
+`screening`, `assessment`, `project`, `kafwego`, `coppercloud`,
+`gate-diagnostic`, `capital-readiness`, `intelligence`, `other`. An explicit
+choice in the form always wins over the link. `?research=` accepts the ids
+in `RESEARCH_IDS`; `?source=` accepts `research-brief`,
+`research-experience`, `advisory`. Anything else is ignored. The visitor sees
+the carried context and can remove it.
 
-Because the POST uses `mode: 'no-cors'`, the response is opaque and the form
-always shows the success state. There is no readable failure path.
+`apps-script.gs` is a copy of the receiving code for reference. Editing it
+here does not change the live deployment.
+
+### Verifying receipt (before release)
+
+Automated tests never contact Google. Before a release, with authorization:
+
+1. Confirm the deployed Apps Script matches `apps-script.gs`, including the
+   `timeframe`, `referral` and `additional_context` columns.
+2. Set `INQUIRY_UPSTREAM_URL` for the context being tested.
+3. Submit one inquiry named `Receipt test <date>` and check both the new
+   sheet row and the alert email at sid@motif54.com.
 
 ## Privacy posture
 
-The site sets **no cookies** and runs **no analytics**. The only third-party
-requests are Google Fonts on every page and the Apps Script endpoint on form
-submit. GSAP and Lenis are self-hosted in `assets/vendor/` for the same
-reason; keep them there rather than switching to a CDN. `motion.js` stores
-nothing on the device. `/privacy` says exactly that — if analytics or any
-tracking technology is ever added, update that page in the same change.
+No cookies, no analytics, no browser storage. Third-party requests: Google
+Fonts on every page, and the Apps Script call made by the function on
+submit. `/privacy` describes exactly this; update it in the same change if
+anything is added.
+
+## Caching
+
+Only `assets/vendor/` is immutable, and its files keep a version in the
+filename. Everything else under `/assets/` revalidates on each load.
+Function responses set their own headers in code.
+
+## Tests
+
+Test tooling lives in `tests/` with its own `package.json`, so Netlify never
+installs it (a root `package.json` would trigger an install on every deploy).
+
+Unit tests need only Node 22:
+
+```bash
+node --test tests/unit/*.test.mjs
+```
+
+Browser tests need Playwright 1.63.0 with its Chromium available to Node
+(the suite checks the version), plus the pinned tools:
+
+```bash
+npm install --prefix tests
+```
+
+```bash
+node --test --test-concurrency=1 tests/e2e/*.test.mjs
+```
+
+The browser suite serves the site with `tests/support/server.mjs`, which
+applies the `netlify.toml` rules and mounts the function with a fake Apps
+Script. It covers journeys, legacy links, keyboard use, the mobile menu,
+reflow at 320px and 200% zoom, no-JS reading, every submission outcome and
+axe (WCAG 2.2 AA tags) on every page.
 
 ## Local preview
 
-Root-relative asset paths mean `file://` will not work; serve it:
-
-```sh
-python3 -m http.server 8000
+```bash
+node tests/support/server.mjs 8788
 ```
 
-Extensionless URLs will 404 under a plain static server (they resolve on
-Netlify). Visit `/projects.html` locally, or use a server that falls back to
-`.html`.
+Then open http://127.0.0.1:8788. Extensionless routes, redirects, the 404
+page and the inquiry form work; the form talks to a fake Apps Script that
+always answers `OK`.
+
+For Netlify's own emulation, run `netlify dev --offline` with the Netlify CLI
+from a checkout. Its function runtime rejects a `NODE_OPTIONS` that contains
+`--use-openssl-ca`; unset that variable first if your shell sets it. Without
+`INQUIRY_UPSTREAM_URL` the function answers 503, which is expected.

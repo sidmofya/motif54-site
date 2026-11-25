@@ -1,0 +1,11 @@
+Lighthouse 13.6.0 | Chrome 158.0.0.0 | mobile, simulated throttling {'rttMs': 150, 'throughputKbps': 1638.4, 'requestLatencyMs': 562.5, 'downloadThroughputKbps': 1474.5600000000002, 'uploadThroughputKbps': 675, 'cpuSlowdownMultiplier': 4} | viewport 412 x 823
+Served locally with gzip (tests/support/server.mjs for the candidate, an equivalent static gzip server for baseline 697d993). Google Fonts fetched live through the session proxy.
+page                 score  LCP s    CLS  TBT ms  KB tx JS KB tx  scores        LCP element
+base-home               93   1.91  0.000     302    140       69  [91, 93, 93]  body > main#main > section.hero > img.depth
+base-inquiry           100   1.46  0.000       4    134       68  [100, 100, 100]  main#main > div.path-grid > button.path-card > p
+cand-advisory          100   1.46  0.004      12    125       56  [100, 100, 100]  main#main > section#invest > div > p.buyer-q
+cand-brief-copper      100   1.51  0.000       6    125       56  [100, 100, 100]  main#main > article > section > p
+cand-brief-waimo       100   1.45  0.000      10    125       56  [100, 100, 100]  main#main > article > section > p
+cand-home               99   1.65  0.000      22    132       56  [99, 99, 99]  body > main#main > section.hero > img.depth
+cand-inquiry           100   1.45  0.000      18    132       64  [100, 100, 100]  body > main#main > section.hero > p
+cand-intelligence       99   1.60  0.000       0    127       56  [99, 99, 99]  article#what-ai-is-made-of > figure.feature-media > img
