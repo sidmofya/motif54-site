@@ -323,4 +323,3 @@ async function onSubmit(e) {
   else if (res && res.status === 413) key = 'payload_too_large';
   setStatus('error', FAILURES[key]());
 }
-

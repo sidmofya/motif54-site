@@ -38,7 +38,7 @@ PASS  /apps-script.gs  404
 PASS  /nope-xyz  404
 PASS  /intelligence/  200  text/html; charset=utf-8
 PASS  /advisory/  200  text/html; charset=utf-8
-PASS  /request-access?interest=kafwego  301 /work-with-us?interest=kafwego 
+PASS  /request-access?interest=kafwego  301 /work-with-us?interest=kafwego
 PASS  /tests/package.json  404  text/html; charset=utf-8
 PASS  /netlify/functions/inquiry.mjs  404  text/html; charset=utf-8
 PASS  /docs/baseline/route-manifest.json  404  text/html; charset=utf-8
