@@ -1,0 +1,15 @@
+{
+  "name": "motif54-site-tests",
+  "private": true,
+  "description": "Development-only test tooling for motif54.com. Lives in tests/ so Netlify never installs it: the site has no root package.json and no build step.",
+  "type": "module",
+  "scripts": {
+    "test:unit": "node --test unit/*.test.mjs",
+    "test:e2e": "node --test --test-concurrency=1 e2e/*.test.mjs",
+    "test": "node --test unit/*.test.mjs && node --test --test-concurrency=1 e2e/*.test.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.14.0",
+    "lighthouse": "13.6.0"
+  }
+}

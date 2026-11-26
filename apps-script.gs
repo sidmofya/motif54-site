@@ -1,6 +1,8 @@
 // Paste this entire file into your Google Apps Script editor.
 // Deploy as a Web App (Execute as: Me, Who has access: Anyone).
-// Copy the deployment URL into the ENDPOINT variable in request-access.html.
+// Set the deployment URL as INQUIRY_UPSTREAM_URL (Functions scope) in Netlify.
+// The site never calls this URL from the browser; netlify/functions/inquiry.mjs
+// forwards validated fields and treats only the reply "OK" as received.
 
 function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();

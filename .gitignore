@@ -1,0 +1,4 @@
+# Test tooling installs into tests/node_modules; never commit or publish it.
+tests/node_modules/
+# Local Netlify CLI state.
+.netlify/

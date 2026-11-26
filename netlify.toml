@@ -1,12 +1,57 @@
 # Netlify configuration for motif54.com
-# Static site — no build step. The repository root IS the published site.
+# Static site with no build step. The repository root is the published site,
+# plus one Netlify function (netlify/functions/inquiry.mjs) for the inquiry
+# form. Unknown paths fall through to 404.html with a real 404 status.
 
 [build]
   publish = "."
   command = ""
 
 # ---------------------------------------------------------------------------
-# Legacy URLs → the Screen · Assess architecture.
+# Publish guard. The repository root is the publish directory, so every
+# committed file would otherwise be served. These force rules return the
+# site's 404 page for repository-only material: the inquiry function's
+# source, tests, review documents, the README and the Apps Script source.
+# They come first so nothing below can shadow them.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/tests/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/docs/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/apps-script.gs"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.gitignore"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# ---------------------------------------------------------------------------
+# Legacy URLs. Retired pages point at the service that absorbed them.
 # 301s come first; the extensionless rewrites at the bottom must not shadow
 # them, since Netlify applies the first matching rule.
 #
@@ -66,18 +111,9 @@
   status = 301
   force = true
 
-# Intelligence retired as a pillar; its content redistributed into the two doors.
-[[redirects]]
-  from = "/intelligence"
-  to = "/assess"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/intelligence.html"
-  to = "/assess"
-  status = 301
-  force = true
+# /intelligence and /intelligence.html redirected to /assess until November
+# 2026. They now serve the intelligence index again (see the rewrites below),
+# so they must not reappear here.
 
 # Critical Minerals is a sector, not a page. Land on the Kafwego card.
 [[redirects]]
@@ -116,6 +152,31 @@
 # default; declaring them as 200 rewrites makes the behaviour explicit rather
 # than relying on the platform default.
 # ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/intelligence"
+  to = "/intelligence.html"
+  status = 200
+
+[[redirects]]
+  from = "/intelligence/what-ai-is-made-of"
+  to = "/intelligence/what-ai-is-made-of.html"
+  status = 200
+
+[[redirects]]
+  from = "/intelligence/from-copper-to-compute"
+  to = "/intelligence/from-copper-to-compute.html"
+  status = 200
+
+[[redirects]]
+  from = "/advisory"
+  to = "/advisory.html"
+  status = 200
+
+[[redirects]]
+  from = "/approach"
+  to = "/approach.html"
+  status = 200
+
 [[redirects]]
   from = "/screen"
   to = "/screen.html"

@@ -1,0 +1,13 @@
+Research links on MOTIF pages, checked live on 2026-11-25 (curl, no redirect following; hash states checked in Chromium against https://ai.sidmofya.com):
+200  https://ai.sidmofya.com/
+200  https://ai.sidmofya.com/#do=apart&metal=copper
+200  https://ai.sidmofya.com/#do=follow
+200  https://ai.sidmofya.com/copper/
+200  https://ai.sidmofya.com/copper/#install
+200  https://ai.sidmofya.com/copper/sources.json
+200  https://ai.sidmofya.com/research-docs/build--run04--coverage-json.html
+200  https://ai.sidmofya.com/research-docs/research--run04--model_notes-md
+200  https://ai.sidmofya.com/research.html
+
+#do=follow -> model state {mode: follow}
+#do=apart&metal=copper -> model state {mode: apart, material: copper}

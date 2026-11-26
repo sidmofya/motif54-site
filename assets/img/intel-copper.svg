@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" width="560" height="360" role="img" aria-labelledby="t">
+  <title id="t">Illustration: copper changing form from rock to an installed conductor</title>
+  <defs>
+    <linearGradient id="cu" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E0A47A"/>
+      <stop offset="1" stop-color="#9E5F35"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="360" fill="#1B1A1E"/>
+  <g stroke="#FFFFFF" stroke-opacity=".04" stroke-width="1">
+    <path d="M0 40H560M0 80H560M0 120H560M0 160H560M0 200H560M0 240H560M0 280H560M0 320H560"/>
+    <path d="M40 0V360M80 0V360M120 0V360M160 0V360M200 0V360M240 0V360M280 0V360M320 0V360M360 0V360M400 0V360M440 0V360M480 0V360M520 0V360"/>
+  </g>
+  <path d="M28 236H532" stroke="#8C8A93" stroke-width="1" stroke-dasharray="2 6"/>
+  <!-- 1 rock -->
+  <path d="M36 228L44 196L70 184L96 192L104 220L88 236H48Z" fill="#2B2A30" stroke="#A2A0A6" stroke-width="1.6" stroke-linejoin="round"/>
+  <g fill="#D08A5A"><circle cx="62" cy="206" r="2.2"/><circle cx="80" cy="216" r="1.8"/><circle cx="70" cy="224" r="1.5"/><circle cx="88" cy="204" r="1.6"/></g>
+  <!-- 2 concentrate -->
+  <path d="M124 236C132 212 150 198 166 198C182 198 200 212 208 236Z" fill="#3A3036" stroke="#A2A0A6" stroke-width="1.6"/>
+  <g fill="#D08A5A" fill-opacity=".8"><circle cx="150" cy="222" r="1.8"/><circle cx="166" cy="212" r="1.8"/><circle cx="180" cy="224" r="1.8"/><circle cx="160" cy="228" r="1.5"/><circle cx="172" cy="220" r="1.5"/><circle cx="190" cy="230" r="1.5"/></g>
+  <!-- 3 anode -->
+  <g fill="url(#cu)" stroke="#D08A5A" stroke-width="1.2" stroke-opacity=".6">
+    <rect x="236" y="176" width="44" height="60" rx="2"/>
+    <rect x="228" y="172" width="12" height="8"/>
+    <rect x="276" y="172" width="12" height="8"/>
+  </g>
+  <!-- 4 cathode -->
+  <g fill="url(#cu)" stroke="#E0A47A" stroke-width="1"><rect x="312" y="168" width="40" height="68"/></g>
+  <path d="M308 168H356" stroke="#A2A0A6" stroke-width="2"/>
+  <!-- 5 busbar -->
+  <g fill="url(#cu)" stroke="#E0A47A" stroke-width="1"><rect x="380" y="216" width="80" height="14" rx="1.5"/></g>
+  <g fill="#1B1A1E"><circle cx="390" cy="223" r="2.6"/><circle cx="450" cy="223" r="2.6"/></g>
+  <!-- 6 rack -->
+  <rect x="484" y="132" width="44" height="104" fill="#222126" stroke="#A2A0A6" stroke-width="1.6"/>
+  <path d="M520 140V228" stroke="#D08A5A" stroke-width="3"/>
+  <g stroke="#8C8A93" stroke-width="1"><path d="M490 146H514M490 158H514M490 170H514M490 182H514M490 194H514M490 206H514M490 218H514"/></g>
+  <!-- journey line -->
+  <path d="M70 268H520" stroke="#D08A5A" stroke-width="1.5"/>
+  <g fill="#D08A5A"><circle cx="70" cy="268" r="4"/><circle cx="166" cy="268" r="4"/><circle cx="258" cy="268" r="4"/><circle cx="332" cy="268" r="4"/><circle cx="420" cy="268" r="4"/><circle cx="506" cy="268" r="4"/></g>
+</svg>
